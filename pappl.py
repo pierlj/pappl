@@ -85,11 +85,13 @@ class Pappl(QtWidgets.QWidget, interface.Ui_Form):
         self.graph.addItem(os.path.basename(str(reduced)))
 
     def colorations(self):
-        nbColor=0 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
-        self.fname = self.graph_3.currentItem().text()
+        nbColor=1 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
+        self.fname = self.grapheLoc[self.graph.currentRow()]
         input=os.path.splitext(self.fname)[0]+"-logic.txt"
+        print(input)
         output=dir_path+"\ASPout.txt"
-        command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --opt-mode=optN --enum-mode=cautious --quiet=1 > "+ os.path.splitext(input)[0] +"-colorations.txt"
+        #option apres input : --opt-mode=optN --enum-mode=cautious --quiet=1
+        command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+"  > "+ os.path.splitext(input)[0] +"-colorations.txt"
         os.system(command)
             
     def lancement(self):
