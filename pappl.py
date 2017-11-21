@@ -15,17 +15,18 @@ import networkx as nx
 file_dir = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(file_dir)
 
-import interface
+import interface_ui
 
 global dir_path
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
-class Pappl(QtWidgets.QWidget, interface.Ui_Form):
+class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     
     fname = ""
     grapheLoc=[]
+    table=[]
     
     def __init__(self):
         
@@ -44,7 +45,9 @@ class Pappl(QtWidgets.QWidget, interface.Ui_Form):
         self.reduc.clicked.connect(self.reduction)
         self.reduc.setEnabled(False)
         self.color.clicked.connect(self.colorations)
-        self.color.setEnabled(False)
+        # self.color.setEnabled(False)
+        self.color_1.clicked.connect(self.afficheColor)
+        # self.color_1.setEnabled(False)
         
     def alerte(a):
         msglabel = QtWidgets.QLabel("Attention Cytoscape.exe n'est pas lancé ! \nVeuillez lancer l'application avant d'afficher un graphe.")
@@ -78,21 +81,30 @@ class Pappl(QtWidgets.QWidget, interface.Ui_Form):
     
     def reduction(self):
         self.fname = self.graph_2.currentItem().text()
-        l=len(self.grapheLoc[self.graph.currentRow()])
-        reduced=self.grapheLoc[self.graph.currentRow()][:l-4]+"-reduced.sif"
-        self.compaction(self.grapheLoc[self.graph.currentRow()],self.grapheLoc[self.graph.currentRow()][:l-4]+"-reduced.sif", self.grapheLoc[self.graph.currentRow()][:l-4]+"-hash.txt", self.grapheLoc[self.graph.currentRow()][:l-4]+"-logic.txt")
+        l=len(self.grapheLoc[self.graph_2.currentRow()])
+        reduced=self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif"
+        self.compaction(self.grapheLoc[self.graph_2.currentRow()],self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-hash.txt", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-logic.txt")
         self.grapheLoc.append(reduced)
         self.graph.addItem(os.path.basename(str(reduced)))
 
     def colorations(self):
-        nbColor=1 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
-        self.fname = self.grapheLoc[self.graph.currentRow()]
-        input=os.path.splitext(self.fname)[0]+"-logic.txt"
-        print(input)
+        nbColor=0 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
+        name = self.grapheLoc[self.graph_3.currentRow()]
+        input=os.path.splitext(name)[0]+"-reduced-logic.txt"
+        
         output=dir_path+"\ASPout.txt"
         #option apres input : --opt-mode=optN --enum-mode=cautious --quiet=1
-        command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+"  > "+ os.path.splitext(input)[0] +"-colorations.txt"
+        if (self.time.value()==0):
+            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+"  > "+ os.path.splitext(input)[0] +"-colorations.txt"
+        else:
+            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --time-limit="+str(self.time.value())+" --opt-mode=optN --enum-mode=cautious --quiet=1 > "+ os.path.splitext(input)[0] +"-colorations.txt"
         os.system(command)
+        self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+        self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+        
+        
+    def afficheColor(self):
+        self.colorGraphe(self.table)
             
     def lancement(self):
         os.startfile(r'C:\Program Files\Cytoscape_v3.5.1\Cytoscape.exe')
@@ -135,7 +147,7 @@ class Pappl(QtWidgets.QWidget, interface.Ui_Form):
             style1.create_discrete_mapping(column='interaction', 
                                         col_type='String', vp='EDGE_SOURCE_ARROW_SHAPE', mappings=kv_pair)
             
-            self.fname = self.graph.currentItem().text()
+            self.fname = self.grapheLoc[self.graph.currentRow()]
             net1 = cy.network.create_from(self.grapheLoc[self.graph.currentRow()])
             cy.style.apply(style1,net1)
 
@@ -608,6 +620,238 @@ class Pappl(QtWidgets.QWidget, interface.Ui_Form):
         
         
         fileOutput.close()
+        
+
+    
+    def InversionTupleID(self,tuple):
+    
+        signe=tuple.split(" ")[1]
+        node=tuple.split(" ")[0]
+        if(signe=="+"):
+            return (node+" -")
+        else:
+            return(node+" +")
+    
+    def FusionTuplesID(self,node1,node2,signe):
+        nouveauTuple=node1
+        #print(node1)
+        #print(node2)
+        #print(signe)
+        for sousTuple in node2.split(","):
+            #print(sousTuple)
+            tupleCalcule=sousTuple
+            if(signe == -1):
+                #print("inversion")
+                tupleCalcule=self.InversionTupleID(tupleCalcule)
+            
+            #print(tupleCalcule)	
+            nouveauTuple=nouveauTuple+","+tupleCalcule
+        #nouveauTuple=(nouveauTuple[1:len(nouveauTuple)+1])
+        #print(nouveauTuple)
+        return(nouveauTuple) 	
+    
+    
+    # Renvoie a chaque fin d'appel un tuple contenant le nouveau noeud s'il est dans la liste
+    # Appel nouveauTuple=rechercheTuple(G,node,tupleCourant,listeNodes,signe):
+        # G : graphe
+        # Noeud : noeud en cours d'exploration
+        # tupleCourange : tuple en cours de construction
+        # ListeNodes : liste des noeuds
+        # signe = signe de la correlation
+        
+    def rechercheTupleID(self,G,node,tupleCourant,listeNodes,signe):
+        # Pour le noeud courant
+        #print(node)
+        signeInitial=signe
+        listeVoisins=G.neighbors(node)
+        for voisin in listeVoisins:
+            signe=signeInitial
+            if(voisin in listeNodes):	
+                
+                listeNodes.remove(voisin)
+                #print(node+" "+voisin)
+                signeInteraction=G[voisin][node]['edge_type']
+                # Calcul du signe l'Ã©lÃ©ment selon signe
+                #print(signe)
+                signe=signe*signeInteraction
+            #print(voisin+" : "+str(signe)+" "+str(signeInteraction)+" from "+node)
+                element=voisin
+                # Si l'interaction est nÃ©gative
+                #print("fusion :"+voisin+" : "+str(signe))
+                tupleCourant=self.FusionTuplesID(tupleCourant,voisin,signe)
+                # Relancer algo sur noeud ajoutÃ©
+                tupleCourant=self.rechercheTupleID(G,voisin,tupleCourant,listeNodes,signe)
+                
+        return tupleCourant
+    
+    
+    
+    
+    # Charger Dico des noeuds
+    def identificationColor(self,path):
+        Dico={}
+        DicoInverse={}
+        name = self.grapheLoc[self.graph_3.currentRow()]
+        input=os.path.splitext(name)[0]+"-reduced-hash.txt"
+        # Charger Dico des nodes
+        
+        file=open(input,'r')
+        data=file.readlines()
+        file.close()    
+        for i in data:
+            #print(i)
+            node=i.split(" : ")[0].split("\"")[1]
+            #print(node)
+            conversion=i.split(" : ")[1].split("\n")[0]
+            #print(conversion)
+            Dico[conversion]=node
+            DicoInverse[node]=conversion
+        
+        # Charger le graphe
+        
+        
+        # convertir le graphe en graphe networkX
+        file=open(path,'r')
+        data=file.readlines()
+        file.close()
+        # print(data) 
+        G=nx.Graph()
+           
+        # Pour chaque ligne :
+        for i in data:
+            # Identifier source & target : convertir
+            source=Dico[i.split("(")[1].split(",")[0]]
+            target=Dico[i.split(",")[1].split(")")[0]]
+        
+            # Identifier le type de correlation : signe de l'arc
+            # cas positif
+            if(len(i.split("Positif"))==2):
+                G.add_edge(source,target,edge_type=1)
+            # cas nÃ©gatif
+            else:
+                G.add_edge(source,target,edge_type=-1)
+        
+        
+        
+        listeTuples=[]
+        
+        listeNodes=[]
+        
+        #Identifier les noeuds hors graphe de corrÃ©lation : tuples simples ou non listÃ©s
+        
+        for i in DicoInverse.keys():
+            if(i in G.nodes()):
+                listeNodes.append(i)
+            else:
+                listeTuples.append(i)
+            
+    
+        # Pour chaque noeud :
+            # Fonction recursive d'exploration : parametre : graphe, tuple actuel, 
+        while (len(listeNodes)!=0):
+            for node in listeNodes:
+                #print(node)
+                nouveauTuple=node
+                listeNodes.remove(node)
+                # Appel fonction de recherche
+                nouveauTuple=self.rechercheTupleID(G,node,nouveauTuple,listeNodes,1)
+                listeTuples.append(nouveauTuple)
+        
+            
+        # Affichage des tuples
+        #for tuple in listeTuples:
+        #	print(tuple) 
+        file=open(os.path.splitext(self.grapheLoc[self.graph_3.currentRow()])[0]+"-coloration-table.csv",'w')
+        tableTuple=[]
+        for i in range(len(listeTuples)):
+            tuple=listeTuples[i]
+            tuple=tuple.split(",")
+            for node in tuple:
+                if(node.split(" ")[1] == '-'):
+                    tableTuple.append([node.split(" ")[0],i,-1])
+                else:
+                    tableTuple.append([node.split(" ")[0],i,1])
+        
+        self.table=tableTuple
+        file.write("\"Node\", \"Coloration\", \"Signe\""+"\n")
+        for tuple in tableTuple:
+            file.write("\""+tuple[0]+"\", "+str(tuple[1])+", "+str(tuple[2])+"\n")
+        file.close()
+    
+    
+    def colorGraphe(self,tableTuple):
+        if not self.isRunning():
+            self.alerte()
+        else:
+            cy = CyRestClient()
+            print(self.grapheLoc[self.graph_3.currentRow()])
+            net1 = cy.network.create_from(self.grapheLoc[self.graph_3.currentRow()])
+            net1.create_node_column("composante", data_type='Integer',is_immutable=False)
+            net1.create_node_column("signe",data_type='Integer',is_immutable=False)
+            table=net1.get_node_table()
+            nodeTable={}
+            nodes=net1.get_nodes()
+            for node in nodes:
+                nodeTable[net1.get_node_value(node)['name']]=node
+            
+            
+            
+            for line in tableTuple:
+            
+                table.set_value(nodeTable[line[0]],"composante",line[1])
+                table.set_value(nodeTable[line[0]],"signe",line[2])
+                
+            net1.update_node_table(table,network_key_col='name', data_key_col='name')
+            style1 = cy.style.create('sample_style1')
+        
+            points = [{
+            'value': '1.0',
+            'lesser':'blue',
+            'equal':'blue',
+            'greater': 'blue'
+            },{
+            'value': '20.0',
+            'lesser':'red',
+            'equal':'red',
+            'greater': 'red'
+            }]
+            
+            points[1]["value"]=self.nbComposantes(tableTuple)
+            style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
+            cy.style.apply(style1,net1)
+            cy.layout.apply(name='organic',network=net1)
+    
+    def processASP(self,path):
+        file=open(path,'r')
+        lines=file.readlines()
+
+        
+        correle=self.lastAns(lines)
+        correleSep=correle.split()
+        file.close()
+        name=os.path.splitext(path)[0]+"-processed"+os.path.splitext(path)[1]
+        file=open(name,'w')
+        for line in correleSep:
+            file.write(line+"\n")
+        file.close()
+
+    def nbComposantes(self,table):
+        nb=0
+        for line in table:
+            if (line[1]>nb):
+                nb=line[1]
+        return nb
+        
+    def lastAns(self,lines):
+        res=0
+        line=lines[0]
+        for k in range(len(lines)):
+            if( "Answer" in lines[k]):
+                res=res+1
+                line=lines[k+1]
+        return line
+    
+        
         
     def main(self):
         self.show()

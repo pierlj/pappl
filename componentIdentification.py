@@ -2,8 +2,11 @@
 
 import sys
 import os
-from PyQt4 import QtGui, QtCore
+import pandas as pd
+
 from py2cytoscape.data.cyrest_client import CyRestClient
+import py2cytoscape
+
 import random
 import psutil
 import networkx as nx
@@ -77,95 +80,131 @@ def rechercheTuple(G,node,tupleCourant,listeNodes,signe):
 
 
 # Charger Dico des noeuds
-
-Dico={}
-DicoInverse={}
-
-# Charger Dico des nodes
-file=open("D:\\Documents\\Centrale\\Ei2\PAPPL\\App\\test-hash.txt",'r')
-data=file.readlines()
-file.close()
-
-for i in data:
-	#print(i)
-	node=i.split(" : ")[0].split("\"")[1]
-	#print(node)
-	conversion=i.split(" : ")[1].split("\n")[0]
-	#print(conversion)
-	Dico[conversion]=node
-	DicoInverse[node]=conversion
-
-# Charger le graphe
-
-
-# convertir le graphe en graphe networkX
-file=open("D:\\Documents\\Centrale\\Ei2\PAPPL\\App\\test-logic-colorations-processed.txt",'r')
-data=file.readlines()
-file.close()
-#print(data) 
-G=nx.Graph()
+def identificationColor():
+	Dico={}
+	DicoInverse={}
 	
-# Pour chaque ligne :
-for i in data:
-	# Identifier source & target : convertir
-	source=Dico[i.split("(")[1].split(",")[0]]
-	target=Dico[i.split(",")[1].split(")")[0]]
-
-	# Identifier le type de correlation : signe de l'arc
-	# cas positif
-	if(len(i.split("Positif"))==2):
-		G.add_edge(source,target,edge_type=1)
-	# cas négatif
-	else:
-		G.add_edge(source,target,edge_type=-1)
-
-
-
-listeTuples=[]
-
-listeNodes=[]
-
-#Identifier les noeuds hors graphe de corrélation : tuples simples ou non listés
-
-for i in DicoInverse.keys():
-	if(i in G.nodes()):
-		listeNodes.append(i)
-	else:
-		listeTuples.append(i)
-		
-
-# Pour chaque noeud :
-	# Fonction recursive d'exploration : parametre : graphe, tuple actuel, 
-while (len(listeNodes)!=0):
-	for node in listeNodes:
+	# Charger Dico des nodes
+	file=open("D:\\Documents\\Centrale\\Ei2\PAPPL\\App\\graphe_0.2_MEF-hash.txt",'r')
+	data=file.readlines()
+	file.close()
+	
+	for i in data:
+		#print(i)
+		node=i.split(" : ")[0].split("\"")[1]
 		#print(node)
-		nouveauTuple=node
-		listeNodes.remove(node)
-		# Appel fonction de recherche
-		nouveauTuple=rechercheTuple(G,node,nouveauTuple,listeNodes,1)
-		listeTuples.append(nouveauTuple)
+		conversion=i.split(" : ")[1].split("\n")[0]
+		#print(conversion)
+		Dico[conversion]=node
+		DicoInverse[node]=conversion
+	
+	# Charger le graphe
+	
+	
+	# convertir le graphe en graphe networkX
+	file=open("D:\\Documents\\Centrale\\Ei2\PAPPL\\App\\graphe-coloration-processed.txt",'r')
+	data=file.readlines()
+	file.close()
+	#print(data) 
+	G=nx.Graph()
+		
+	# Pour chaque ligne :
+	for i in data:
+		# Identifier source & target : convertir
+		source=Dico[i.split("(")[1].split(",")[0]]
+		target=Dico[i.split(",")[1].split(")")[0]]
+	
+		# Identifier le type de correlation : signe de l'arc
+		# cas positif
+		if(len(i.split("Positif"))==2):
+			G.add_edge(source,target,edge_type=1)
+		# cas négatif
+		else:
+			G.add_edge(source,target,edge_type=-1)
+	
+	
+	
+	listeTuples=[]
+	
+	listeNodes=[]
+	
+	#Identifier les noeuds hors graphe de corrélation : tuples simples ou non listés
+	
+	for i in DicoInverse.keys():
+		if(i in G.nodes()):
+			listeNodes.append(i)
+		else:
+			listeTuples.append(i)
+			
+	
+	# Pour chaque noeud :
+		# Fonction recursive d'exploration : parametre : graphe, tuple actuel, 
+	while (len(listeNodes)!=0):
+		for node in listeNodes:
+			#print(node)
+			nouveauTuple=node
+			listeNodes.remove(node)
+			# Appel fonction de recherche
+			nouveauTuple=rechercheTuple(G,node,nouveauTuple,listeNodes,1)
+			listeTuples.append(nouveauTuple)
+	
+		
+	# Affichage des tuples
+	#for tuple in listeTuples:
+	#	print(tuple) 
+	
+	tableTuple=[]
+	for i in range(len(listeTuples)):
+		tuple=listeTuples[i]
+		tuple=tuple.split(",")
+		for node in tuple:
+			if(node.split(" ")[1] == '-'):
+				tableTuple.append([node.split(" ")[0],i,-1])
+			else:
+				tableTuple.append([node.split(" ")[0],i,1])
+	print(tableTuple)
+	
+	cy = CyRestClient()
+	net1 = cy.network.create_from("D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graphe_0.2_MEF.sif")
+	net1.create_node_column("composante", data_type='Integer',is_immutable=False)
+	net1.create_node_column("signe",data_type='Integer',is_immutable=False)
+	
+	
+	table=net1.get_node_table()
+	nodeTable={}
+	nodes=net1.get_nodes()
+	for node in nodes:
+		nodeTable[net1.get_node_value(node)['name']]=node
+	
+	
+	for line in tableTuple:
+		
+		table.set_value(nodeTable[line[0]],"composante",line[1])
+		table.set_value(nodeTable[line[0]],"signe",line[2])
+		
+	net1.update_node_table(table,network_key_col='name', data_key_col='name')
+
+	style1 = cy.style.create('sample_style1')
+	
+	points = [{
+	'value': '1.0',
+	'lesser':'white',
+	'equal':'white',
+	'greater': 'white'
+	},{
+	'value': '20.0',
+	'lesser':'green',
+	'equal':'green',
+	'greater': 'green'
+	}]
 
 	
-# Affichage des tuples
-#for tuple in listeTuples:
-#	print(tuple) 
-
-tableTuple=[]
-for i in range(len(listeTuples)):
-	tuple=listeTuples[i]
-	tuple=tuple.split(",")
-	for node in tuple:
-		tableTuple.append([node.split(" ")[0],i])
+	style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
+	
 
 
-cy = CyRestClient()
-net1 = cy.network.create_from("D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\test.sif")
-table=net1.get_node_table()
-print(table)
-net1.create_node_column("coloration", data_type='Integer',is_immutable=False)
-nodes=net1.get_nodes()
-for node in nodes:
-	nodes.
+	cy.style.apply(style1,net1)	
+
 
 
 

@@ -1,0 +1,1033 @@
+"PHB2 +,ARNT -" : node0
+"CDK2 +" : node1
+"CCNE1 +,CBX6 -,TCF19 -" : node2
+"CA9 +" : node3
+"TH +,NPAS1 -,PITX3 +,MIP +" : node4
+"JUN +,TNFRSF1B +,BEX2 +,BECN1 +,LBP -,CD69 +,RARG -,NEIL1 +,ZNF383 -,NFRKB +" : node5
+"HIF1A +,ENO1 +,BNIP3 +,NT5E +,PFKFB3 +,MDK +,ALAS2 +,ACE2 -,PGK1 +,SETD2 +,XPC +,KIN +,RNF111 -,ZNF217 +,WASF3 +,LIMD1 -" : node6
+"FOS +,HSPH1 +,FMO4 +,ERCC4 +,CLU -,SRR +,SLC10A2 -,CASP9 +,ELK4 +" : node7
+"EPO +" : node8
+"CYP1B1 +" : node9
+"CYP1A1 +" : node10
+"BTG2 +,SPHK1 +" : node11
+"TERT +" : node12
+"TNC +" : node13
+"SPRR1B +,EHF +,DCDC2 -" : node14
+"STMN1 +" : node15
+"TP53 +,APCS +,CCNB2 -,CHEK1 -,GML +,IFI16 +,HSP90AB1 -,MAP4 -,MAD1L1 -,NLRC4 +,PRC1 -,PERP -,REEP5 -,S100B +,SFN +,TCF7L2 -,HECA +,SLC6A6 -,SSTR2 -,UHRF1BP1 +,TNFRSF10A +,TP53I3 +,VCAN +,MDM4 -,RUVBL1 -,PAX5 +,BLK -,CD79A +,CHD4 -" : node16
+"UGT2B15 +" : node17
+"TNF +" : node18
+"VEGFA +,TEAD4 -" : node19
+"VCAM1 +" : node20
+"VDR +,CALB1 +,CST5 +,TNFRSF21 +,TPT1 +,DKK4 -" : node21
+"BRCA1 +,IRF9 +,SP100 +,ASPM +,AREG -,KHSRP -,RNASEL +,DLX4 -,TP53BP1 +" : node22
+"ATG5 +" : node23
+"CCK +" : node24
+"CCL2 +,NFAT5 -" : node25
+"AR +,KISS1R +,NRAS -,PEG10 +,SEPT7 -,CDK20 +,CLK3 -,ETV1 +,TMPRSS2 +,TSC2 -,TSC1 -,WNT7B +,ARG2 +,BTG1 -,ARG1 +,AKR1C3 -,ACTA1 +,URI1 -,TRIM24 +,FOXH1 -,NCOR2 +" : node26
+"ATF3 +,EPHA1 +,ADIPOR2 -" : node27
+"ABCB1 +" : node28
+"APOC3 +" : node29
+"LGALS3 +" : node30
+"LOR +" : node31
+"MAPK8 +" : node32
+"MAT2A +" : node33
+"KRT16 +" : node34
+"LDHA +" : node35
+"IL12B +" : node36
+"IL2 +,TOB1 -" : node37
+"IL3 +,VEZF1 +" : node38
+"IL6 +,ZMYND11 +,GBX2 +" : node39
+"FOSL1 +" : node40
+"GJA1 +" : node41
+"HEY1 +,OCLN +" : node42
+"IFNG +" : node43
+"ETS1 +,TRB -,TRA +,ECE1 +,CASP1 +,SLC26A3 +,RHOC +,TMEM158 +,XRCC5 -" : node44
+"EGFR +" : node45
+"FAS +" : node46
+"EZR +" : node47
+"CYP19A1 +" : node48
+"CXCL8 +" : node49
+"DDIT3 +,ANKRD1 -,MYL2 +" : node50
+"DCN +" : node51
+"CSF1 +" : node52
+"CREM +,CD247 -,CCL4 -,DUSP4 -,G6PD -" : node53
+"CTSL +" : node54
+"CTGF +" : node55
+"CCND2 +,MAFB -" : node56
+"CDKN1A +,CBX8 -,TAF1 +,ZBTB5 -,ZBTB17 -,FOXG1 -,KLF16 -,NFIA -,NFIB +,MBP +,ZNF76 -,PCYT1A -,ZNF143 -,BUB1B -" : node57
+"CD82 +" : node58
+"SPI1 +,PARG -,CTSS +,CXCR1 +,ITGAM +,TLR4 +,ZNF160 -" : node59
+"SPP1 +" : node60
+"SMN1 +" : node61
+"SOX7 +" : node62
+"RHOB +" : node63
+"SMAD7 +,SKIL -,ADAM12 +" : node64
+"RARB +" : node65
+"PTN +" : node66
+"RARA +,SCD +,NR1I3 +,ANXA8 -" : node67
+"PPARD +,ANG -,TXN +" : node68
+"PTGS2 +" : node69
+"PLAU +" : node70
+"PLAUR +" : node71
+"PGR +,HLTF +,KLK4 +" : node72
+"PLAT +" : node73
+"NOX5 +" : node74
+"NEFL +" : node75
+"NAMPT +" : node76
+"MYC +,TFAP4 +,UBE2C +,EIF4E +,CHKA -,FTH1P18 -,FUT3 +,CD33 -,BCAT1 -,CD38 +,CDC34 +,PTBP1 +,PRODH -,NFE2 -,ST3GAL4 +,ST3GAL3 +,ST3GAL1 +,SRSF1 +,IGK +,HLA-G +,HNRNPA1 +,HLA-E +,HLA-F +,KRAS +,SALL2 +,MXI1 -,RFX1 -,MAP1A +,RFX3 -" : node77
+"MSR1 +" : node78
+"MMP7 +" : node79
+"MMP3 +" : node80
+"MMP2 +" : node81
+"MMP13 +" : node82
+"MMP1 +,NR4A2 -" : node83
+"MEF2D +" : node84
+"BGLAP +" : node85
+"ICAM1 +,ETV5 +" : node86
+"IL17A +" : node87
+"EDN1 +" : node88
+"E2F3 +" : node89
+"EDNRB +" : node90
+"CDH1 +,CBX7 +,TCF12 -,RBBP7 -" : node91
+"CCR7 +" : node92
+"CXCR4 +,CREB3 +" : node93
+"BID +" : node94
+"CCND1 +,BHLHE41 -,HEXIM1 -,RNF14 +" : node95
+"ASS1 +" : node96
+"BAX +,GFI1 -,CYP27B1 +" : node97
+"BACE1 +" : node98
+"NR4A1 +,BRE -,RNF7 -" : node99
+"MET +" : node100
+"MICA +" : node101
+"MIF +" : node102
+"ITGB2 +" : node103
+"LEP +" : node104
+"FGF2 +" : node105
+"HBEGF +" : node106
+"ALDOA +" : node107
+"APEX1 +" : node108
+"AGTR1 +" : node109
+"ACE +" : node110
+"SOCS1 +" : node111
+"TWIST1 +,YBX1 +,CDC20 -,CCNC -,ANAPC4 -,CKS2 -,CDKN3 +,RAD9A +,RBBP8 -,KPNA2 -,MNAT1 -,MAPK3 +,DNM3 +" : node112
+"TIMP2 +" : node113
+"RORA +,NPSR1 -,NR1D1 +,ARNTL -,NPAS2 +" : node114
+"RECK +" : node115
+"PTGES +" : node116
+"SLC2A1 +" : node117
+"SLC29A1 +" : node118
+"SDHB +" : node119
+"VIM +" : node120
+"CASP2 +" : node121
+"NFKB1 +" : node122
+"PDX1 +" : node123
+"CREB1 +,LYL1 +,ETV3 +,UXT +,SMAD6 +,PPP2CA +,ACACA +" : node124
+"KLK3 +,SRCAP +,RREB1 -" : node125
+"AFP +" : node126
+"AKT1 +" : node127
+"BCL2L1 +" : node128
+"BCL2 +" : node129
+"BBC3 +" : node130
+"BIRC5 +" : node131
+"BDKRB2 +" : node132
+"BCL3 +" : node133
+"CCNB1 +" : node134
+"CAV1 +" : node135
+"BRCA2 +" : node136
+"CDK1 +" : node137
+"CHEK2 +" : node138
+"CHUK +" : node139
+"CKM +,KLF3 +" : node140
+"CRYAB +" : node141
+"CTNNB1 +" : node142
+"CTSD +" : node143
+"DDB2 +" : node144
+"DUSP1 +" : node145
+"E2F1 +,XRCC1 +,TP53BP2 +,ULK1 +,WWOX -,TOP2A +,RASGRP1 +,RRM2 +,PNRC2 -,POLA1 +,PPP1R13B +,RASGEF1B +,NPAT +,MT1G +,MEFV +,MCPH1 +,MAP3K5 +,MAP1LC3A +,LRBA +,KIR3DL1 +,ISYNA1 +,IRF3 -,ABCC2 -,PURA +,MAVS -,HIC1 +,EFNA1 -,ACKR3 -,FHIT -,FANCA +,ETV4 +,DRAM1 +,CTNNBIP1 +,CDCA7 +,ASF1B +,POLR1A -" : node146
+"E2F7 +" : node147
+"EPHA2 +" : node148
+"FLT1 +" : node149
+"FOXM1 +,FGB -,CDC25B +" : node150
+"GDF15 +" : node151
+"GSTP1 +" : node152
+"IGFBP3 +" : node153
+"IPO7 +" : node154
+"IGF1R +" : node155
+"HR +,OLR1 +" : node156
+"HIPK2 +,ZBTB4 -,NOX1 -" : node157
+"HNF4A +,PPARA +,SHBG +,CYP2C8 +,C1QTNF5 +,SREBF2 -,HMGCR -,MTTP +,ACOT7 -,UCP1 -,GSK3B +,IL6R -,IL6ST -,CPT1A -,ACSL1 -,SOX17 +" : node158
+"MGMT +" : node159
+"MCM7 +" : node160
+"MDM2 +" : node161
+"MCL1 +" : node162
+"KLF2 +,FABP5 -" : node163
+"OGG1 +" : node164
+"NKX3-1 +" : node165
+"MUC2 +" : node166
+"PTEN +,MXD1 -" : node167
+"PPP2R4 +" : node168
+"PML +,UBA7 -,EAF2 -,ARID3A +" : node169
+"PMAIP1 +" : node170
+"PIAS3 +,ATF1 +" : node171
+"PDGFRB +" : node172
+"SIVA1 +" : node173
+"RASSF1 +" : node174
+"RECQL4 +" : node175
+"TBXAS1 +" : node176
+"THBS1 +" : node177
+"STAT3 +,ETV6 +,ESR2 +,IFNAR1 +,FGG +,FGF1 -,LTBP1 -,KLF11 +,JAK3 +,IL21 +,CD46 +,BST2 +,FAAH +,CISH +,UCP2 -,STS +,TYK2 -,NME1 +,NOSTRIN -,S1PR1 +,SALL4 +,ABCA3 +,SHH +,OAS1 -,OSM +,PAX3 -,TP63 +,SATB2 -" : node178
+"TYMS +" : node179
+"TRIM22 +" : node180
+"UHRF1 +" : node181
+"TNFRSF10B +" : node182
+"XPO1 +" : node183
+"WRN +" : node184
+"WT1 +,CIAO1 -,NDRG2 +,PAX2 -,NPHS1 +,UBE2I -,PODXL +,ZHX3 +" : node185
+"STARD7 +" : node186
+"MYCN +,MCM3 +,MCM4 +,MCM2 +,MCM8 +,MCM5 +,MCM6 +,DKK3 -,EFNB3 +,ABCC1 +,MYCL +,NES +,NGFR -" : node187
+"PRDM1 +,LMO2 -,GCSAM -,GYPA +" : node188
+"TIMP1 +" : node189
+"XBP1 +,ERP29 -,NPPB +" : node190
+"CD19 +" : node191
+"FHL2 +,ZBTB14 +" : node192
+"LEF1 +,MYCBP +,NRCAM +,DLL1 +,ALX4 -,AES +,RND3 +" : node193
+"CD14 +" : node194
+"CDKN1B +" : node195
+"PTH +,GCM2 +,CASR +" : node196
+"SKP2 +" : node197
+"CYP7A1 +" : node198
+"CYP3A4 +" : node199
+"HOXA10 +,IL11 -,KLF9 -,BHLHE22 +,GZF1 -,HOXA11 -" : node200
+"IL10 +" : node201
+"CXCL1 +" : node202
+"CDH3 +" : node203
+"ATM +,TERF1 -,KLRK1 +" : node204
+"MAD2L1 +" : node205
+"SIRT1 +,ACAN +,ADAMTS5 -,CFH -,EGLN1 -,DLL4 -,TBX3 -,NOTCH1 -,PARP1 -,HTR1A +,DEAF1 -" : node206
+"STAT1 +,CEBPE +,S100A10 +,MVP +,FCGRT -,CD22 +,CCR1 +,FGFR3 -,SHOX -" : node207
+"STAT2 +" : node208
+"TFF1 +,NELFB -" : node209
+"E2F6 +" : node210
+"EP300 +" : node211
+"FOXC1 +" : node212
+"ESR1 +,PTMA -,TAC3 +,HTRA2 +,ZFHX3 +,BLM +,CD24 -,CYP2C19 -,F12 +,FOXP1 +,CRHBP +,IDO2 -,TLR9 +,IDO1 -,BARD1 +" : node213
+"FST +" : node214
+"FOXC2 +" : node215
+"HSPA5 +" : node216
+"HNRNPA2B1 +" : node217
+"IGF1 +" : node218
+"IFNA1 +" : node219
+"IRF7 +,IFNA2 +" : node220
+"NCAM1 +" : node221
+"KISS1 +,MED23 +" : node222
+"NAT1 +" : node223
+"MUC1 +,PIAS4 -" : node224
+"PC +" : node225
+"PRL +" : node226
+"RELA +,CCL20 +,GNRH2 -,GTF2B +,MMP12 +" : node227
+"SERPINB5 +" : node228
+"CDH2 +" : node229
+"CFLAR +" : node230
+"CRH +" : node231
+"ERBB2 +,ECD +,GCGR -" : node232
+"ERBB3 +" : node233
+"HMOX1 +" : node234
+"TJP1 +" : node235
+"TGFA +" : node236
+"XIAP +" : node237
+"WEE1 +" : node238
+"CCR2 +" : node239
+"ASNS +" : node240
+"ADIPOR1 +" : node241
+"SELE +" : node242
+"LDLR +,KLF13 -" : node243
+"ID1 +,ZNF148 -" : node244
+"ITGB3 +" : node245
+"ITGAV +" : node246
+"GATA4 +,IAPP +,HDAC9 -,SALL3 +" : node247
+"GATA6 +" : node248
+"KDR +" : node249
+"ACTA2 +" : node250
+"BMP2 +" : node251
+"PROX1 +" : node252
+"TNFRSF12A +" : node253
+"ANGPT2 +" : node254
+"ANPEP +" : node255
+"CSF3R +" : node256
+"EGR1 +,FAP +,CHGA +,CDK5R1 +,SYN1 +,SLC4A2 +,PDGFC +,PDGFB +,PCSK2 +,LMTK2 +" : node257
+"BMP4 +,FOXL1 +" : node258
+"CD8A +" : node259
+"IL5 +" : node260
+"LCK +" : node261
+"IL2RB +" : node262
+"GP6 +" : node263
+"GRPR +" : node264
+"ERG +,EPB41L3 -,EPB41L4B +,WNT11 +" : node265
+"FLI1 +,PHLDA1 -,EWSR1 +" : node266
+"NDRG1 +" : node267
+"MUC4 +" : node268
+"MYB +,IL7 +,CDO1 +,GSTM1 +" : node269
+"MMP9 +" : node270
+"PTHLH +" : node271
+"PF4 +,PBX2 +,EMX2 +" : node272
+"TNFSF14 +" : node273
+"TGFBR2 +" : node274
+"TFAP2A +,NME3 +,KLF12 -,MCAM -,LNPEP +,HOXA4 -,DCBLD2 +,ACHE -" : node275
+"TBXA2R +" : node276
+"NOS3 +" : node277
+"RTN3 +" : node278
+"ATF2 +,ST3GAL5 +,POLB +,PCK1 +" : node279
+"ATF5 +" : node280
+"CEBPA +,F9 +" : node281
+"SIRT2 +" : node282
+"TRIB3 +" : node283
+"NPPA +,NKX2-2 +" : node284
+"CCNA2 +,E4F1 -,UBE4B +" : node285
+"FASLG +" : node286
+"NCF2 +" : node287
+"MAPK1 +" : node288
+"MACROD1 +" : node289
+"RNASE2 +" : node290
+"PTGIR +" : node291
+"PRG2 +" : node292
+"PEBP1 +" : node293
+"ACP5 +" : node294
+"CYBB +" : node295
+"BCL6 +,CSF1R +,PDCD2 -,IGFBP4 -,HDAC7 -,HDAC5 -,SLIT2 +,LITAF -,EREG -,KDM2A +" : node296
+"CD40 +" : node297
+"CD68 +" : node298
+"CLEC4G +" : node299
+"ITGAX +" : node300
+"FCER1A +" : node301
+"GATA1 +,CBFB -,BACH1 +,AGGF1 +,CDA +,GP1BB +,GYPB +,HEMGN -,DICER1 +,PTGFR -,ZNF268 -" : node302
+"IFIT3 +" : node303
+"IL1B +,SUGP1 +" : node304
+"TGFB1 +" : node305
+"NFKBIA +" : node306
+"CDKN2B +" : node307
+"TGFBR1 +" : node308
+"THBD +" : node309
+"PRKCA +" : node310
+"MUC5AC +" : node311
+"HSD17B2 +" : node312
+"FGFBP1 +" : node313
+"CXCR5 +" : node314
+"CRABP1 +" : node315
+"CCNA1 +" : node316
+"ABCC3 +" : node317
+"CYP2B6 +" : node318
+"UGT1A1 +" : node319
+"LPL +" : node320
+"PDK4 +" : node321
+"CAT +" : node322
+"HSD11B2 +" : node323
+"ANGPTL4 +" : node324
+"SAT1 +" : node325
+"SLC25A20 +" : node326
+"SOD1 +" : node327
+"FOXP3 +" : node328
+"OCA2 +" : node329
+"ZFP36 +,LATS2 -,ELAVL1 +" : node330
+"TFRC +" : node331
+"TP73 +" : node332
+"EBNA1BP2 +" : node333
+"DKK1 +" : node334
+"HLA-A +" : node335
+"HDAC2 +,PRDX2 -,BMP7 -" : node336
+"HLA-C +" : node337
+"HLA-B +" : node338
+"BMI1 +" : node339
+"BRD7 +,BRD2 +,BRD3 +" : node340
+"CDK4 +" : node341
+"CDK6 +" : node342
+"CDC25A +" : node343
+"CDC25C +" : node344
+"PRDX3 +" : node345
+"ODC1 +,MAX +" : node346
+"NOL7 +" : node347
+"SURF2 +" : node348
+"SURF1 +" : node349
+"SFRP1 +" : node350
+"IGF2BP1 +" : node351
+"NBN +" : node352
+"MME +" : node353
+"MTA1 +,MTA3 -,SUMO2 +,CGB5 +" : node354
+"JUNB +" : node355
+"PPP2R2B +" : node356
+"SOST +" : node357
+"AURKA +" : node358
+"HSD3B2 +" : node359
+"SLC5A5 +" : node360
+"CYP11B2 +" : node361
+"NF1 +,TBPL1 +" : node362
+"NR2F1 +" : node363
+"PFDN4 +" : node364
+"ITGB1 +" : node365
+"RAP1A +" : node366
+"RBL2 +" : node367
+"RUNX2 +,SNAI3 +,TRPS1 -" : node368
+"SRPX +" : node369
+"CTPS1 +" : node370
+"CD44 +" : node371
+"AKT2 +" : node372
+"AKR1C2 +" : node373
+"ILK +" : node374
+"FN1 +" : node375
+"F2R +" : node376
+"AGT +" : node377
+"SUMO1 +" : node378
+"VWF +" : node379
+"PER2 +" : node380
+"PER3 +" : node381
+"CRY2 +" : node382
+"PER1 +" : node383
+"BHLHE40 +" : node384
+"CRY1 +" : node385
+"TFF3 +" : node386
+"TBX21 +,CXCR3 +,PTGDR2 -" : node387
+"TF +" : node388
+"TLR2 +" : node389
+"TNFAIP3 +" : node390
+"TLR7 +" : node391
+"TNFRSF13C +" : node392
+"UPP1 +" : node393
+"TRAF1 +" : node394
+"YY1 +,ZNF175 +,NTF3 +,PRDM2 +,POSTN -,PDIA6 -,GDAP1 +,ACTC1 -,COX7C +,DNAJB4 +" : node395
+"CXCL10 +" : node396
+"CTSB +" : node397
+"CTCF +,RARRES1 +,MGAT5B +,NEUROG3 +,NEUROD4 +,NEUROG1 +,ASH1L +,NEUROD1 +,VSX2 +,NEUROG2 +,NHLH1 +" : node398
+"CXCR2 +" : node399
+"CXCL12 +" : node400
+"COL1A2 +,RFX5 -" : node401
+"CFTR +" : node402
+"CRP +" : node403
+"CRHR1 +" : node404
+"COL2A1 +,SPEN -,DMPK -" : node405
+"FAF1 +" : node406
+"FLT4 +" : node407
+"FGF8 +" : node408
+"FIGF +" : node409
+"DCST1 +" : node410
+"DCST2 +" : node411
+"EPCAM +" : node412
+"EBI3 +" : node413
+"HPSE +" : node414
+"HOXA9 +,KAT6A +" : node415
+"HYAL1 +" : node416
+"IFNB1 +,NFKBIB -" : node417
+"FTH1 +" : node418
+"GFAP +" : node419
+"GATA3 +,STAT4 -,PRF1 -,PAEP +,DLC1 +" : node420
+"GKN2 +" : node421
+"HES1 +,MAP2 -" : node422
+"IL1RN +" : node423
+"IL23A +" : node424
+"IRF1 +,EIF2AK2 +,DDX58 +,PSMB9 +,IL27 +" : node425
+"IRF4 +,CXCL9 +,NFATC2 +" : node426
+"IL12A +" : node427
+"IL17C +" : node428
+"IL18 +" : node429
+"IL1A +" : node430
+"MMP14 +" : node431
+"LTC4S +" : node432
+"LIPE +" : node433
+"LCN2 +" : node434
+"NOX4 +" : node435
+"NOS1 +" : node436
+"NOS2 +" : node437
+"NOD2 +" : node438
+"NOLC1 +" : node439
+"NLRP2 +" : node440
+"REPS2 +" : node441
+"PTGDS +" : node442
+"PLIN1 +" : node443
+"PTAFR +" : node444
+"OPTN +" : node445
+"SP1 +,DHCR24 +,CXCL5 +,CXCL14 +,COX4I1 -,CD151 +,CD99 +,APLNR +,ARF6 +,B4GALT5 +,ATP2A3 +,B4GALT1 +,KRT14 -,LOXL4 +,HTT +,IRF5 +,HCN2 +,HCN4 +,HIST2H4A +,HPR +,HSD3B1 +,ADAM23 +,ADAM10 +,ADAM17 +,ADRA2B +,ADRBK1 +,ABCB8 +,STARD3 +,SREBF1 +,ACLY +,SPN +,TICAM1 -,TERF2 +,VAMP2 +,UGDH +,UGCG +,WIF1 -,MAT2B +,MMP11 +,MMRN1 +,MPO +,NDUFV1 +,NDUFV2 +,P2RX4 -,PDIA2 +,P4HA1 +,PPL +,PRM1 +,REST +,AVP +,CARTPT -,CD59 -,TPH2 +,NRP1 -,TAC1 -,PENK -,KCNN4 -,LIN28A -,GLRA1 +,GJD2 -,GRIN1 -,RGN -,SIGIRR +,SLC39A8 +,SMPD1 +,APP +,ATP2A2 +,HAX1 -,KIF2C +,PCSK9 +" : node446
+"SP3 +,MSH6 +,LECT1 +,TFF2 -,ALPL +,ETF1 -" : node447
+"SP4 +" : node448
+"STK39 +" : node449
+"SLC25A27 +" : node450
+"SNAI1 +" : node451
+"SOD2 +" : node452
+"SERPINA3 +" : node453
+"SERPINB1 +" : node454
+"RGS4 +" : node455
+"RIPK2 +" : node456
+"S100A6 +" : node457
+"SDC1 +" : node458
+"AGER +" : node459
+"ADORA1 +" : node460
+"ABCG2 +" : node461
+"ABCA1 +,ZNF202 -,POMGNT1 +" : node462
+"BHMT +" : node463
+"BGN +" : node464
+"BCL2L11 +" : node465
+"BCL2A1 +" : node466
+"B2M +" : node467
+"ALOX5 +" : node468
+"AMH +" : node469
+"CCL22 +" : node470
+"CCL5 +" : node471
+"CCL3 +" : node472
+"CCL19 +" : node473
+"CCL11 +" : node474
+"CEACAM1 +" : node475
+"CFI +" : node476
+"CD80 +" : node477
+"CD83 +" : node478
+"CD86 +" : node479
+"CD3G +" : node480
+"CD40LG +" : node481
+"CD58 +" : node482
+"CCR3 +" : node483
+"CCR5 +" : node484
+"GCK +" : node485
+"INS +,PAX4 -,GCG +" : node486
+"SNAI2 +,UBE2D3 -,NETO2 -,L1CAM -,FZD1 -,LPAR2 -" : node487
+"SLC20A1 +" : node488
+"PSEN1 +" : node489
+"NR5A2 +,CYP11B1 +,ABCG5 +,ABCG8 +" : node490
+"PCSK1 +" : node491
+"NR2F6 +" : node492
+"NDC80 +" : node493
+"MITF +,TYRP1 +,ITGA4 +,TRPM1 +,CTSK +,GPNMB +,ONECUT2 +,SYTL4 -,PPARGC1A +,OTC +,MFN2 +,CRTC1 +" : node494
+"MC2R +" : node495
+"BDNF +" : node496
+"CASP8 +" : node497
+"CLDN2 +" : node498
+"PLD1 +" : node499
+"RB1 +,RBL1 -,HIST1H2AE +,RB1CC1 +" : node500
+"TP53INP1 +" : node501
+"TLR3 +" : node502
+"TNFSF11 +" : node503
+"RRM1 +" : node504
+"SERPINE1 +,ARNTL2 +" : node505
+"NRIP1 +,SLC7A1 +" : node506
+"PCSK6 +" : node507
+"MYBL2 +" : node508
+"HMGA1 +,XPA -,SLC2A3 +,KL +" : node509
+"FGFR1 +" : node510
+"ERCC5 +" : node511
+"ELF4 +" : node512
+"ERCC1 +" : node513
+"DHFR +" : node514
+"DIRAS3 +" : node515
+"DBF4 +" : node516
+"DAPK2 +" : node517
+"CDKN2A +" : node518
+"CASP7 +" : node519
+"CD2AP +" : node520
+"APAF1 +" : node521
+"SOCS2 +" : node522
+"CCND3 +" : node523
+"SFTPB +" : node524
+"NR1I2 +,THRSP +,CORO1C +,NOD1 -,KLF6 +,PSG5 +,RAB3A +" : node525
+"SERPINC1 +,THRA -" : node526
+"GFER +" : node527
+"FABP2 +" : node528
+"CYP2D6 +" : node529
+"GH1 +" : node530
+"UGT1A9 +" : node531
+"TXNIP +,HDAC10 -,MLXIPL +" : node532
+"PLIN2 +" : node533
+"CEBPD +" : node534
+"CETP +" : node535
+"APOBR +" : node536
+"CEBPB +,TNFAIP6 +,ADM +,FURIN +,GOT1 +" : node537
+"LRP1 +" : node538
+"PON1 +" : node539
+"PON2 +" : node540
+"PPARG +,GK +,PDK2 -,POU2F1 +,HBG1 -,LGALS4 +,ERO1L +,VLDLR +,SLC9A1 -,REN -,ACAT1 +" : node541
+"TNFSF10 +" : node542
+"CASP3 +" : node543
+"HBD +" : node544
+"FLT3 +" : node545
+"MAP1LC3B +,TFDP3 +" : node546
+"TGFB2 +" : node547
+"IKBKE +" : node548
+"HSPB1 +" : node549
+"HSPA4 +" : node550
+"HGF +" : node551
+"HAMP +" : node552
+"GAST +" : node553
+"LGALS3BP +" : node554
+"KRT17 +" : node555
+"JAK2 +" : node556
+"AKAP12 +" : node557
+"DNMT1 +,IL32 -,MSH2 +" : node558
+"CSRP1 +" : node559
+"CFB +" : node560
+"CHI3L1 +" : node561
+"NANOG +,GATA2 -,ADH1A -,YES1 +,SOX1 +,MTF2 +,CGB -,LAMB1 -,SSB -,HAP1 +" : node562
+"PTPN6 +,PKNOX1 +,SYP +" : node563
+"SOCS3 +" : node564
+"OPRM1 +" : node565
+"PGF +" : node566
+"PIM1 +" : node567
+"GAS2 +" : node568
+"IGFBP5 +" : node569
+"STAT5A +" : node570
+"INSR +" : node571
+"ZEB1 +,GRHL2 -,PKP3 -" : node572
+"KLF4 +,IFITM3 -,HSPA8 +,GPA33 +,CDH5 +,ALPI +" : node573
+"TCF4 +,CLEC4C +,NOTUM +,NRXN1 +" : node574
+"CD97 +" : node575
+"DNMT3A +,CDH6 -" : node576
+"CAMP +" : node577
+"PDGFA +" : node578
+"IGF2 +" : node579
+"IRF8 +,JAK1 +" : node580
+"SMAD3 +" : node581
+"STIM1 +" : node582
+"SRY +,WDR5 +" : node583
+"MCM10 +" : node584
+"CIITA +,HLA-DMB +,HLA-DOA +,HLA-DMA +,HLA-DOB +" : node585
+"LRRN3 +" : node586
+"LXN +" : node587
+"NTRK1 +" : node588
+"FOXO1 +" : node589
+"CD1D +" : node590
+"IL4 +,SPIC +" : node591
+"IL13 +" : node592
+"ELANE +" : node593
+"DSG4 +,FOXN1 -" : node594
+"ID2 +" : node595
+"IGFBP1 +" : node596
+"IL15 +" : node597
+"PHGDH +" : node598
+"CDKN1C +" : node599
+"GADD45A +" : node600
+"BCL11A +" : node601
+"COL10A1 +" : node602
+"EZH2 +,AXL +,ADRB2 -,ALDH1A1 -,FBXO32 -,HDAC1 -,MMP28 +,SSTR1 -,RPLP0 +,PIP5K1C -,SATB1 -,HBE1 -,RUNX3 -,CAPN10 -,DNASE1 -,FADD -,ICAM3 +,HSPD1 +,TIAL1 +,PEA15 +,ING1 -,ING4 -,ANGPT1 +,NGF +,TXN2 +,TRAF6 -,EHMT2 -,SIAH1 +" : node603
+"ESRRG +" : node604
+"PAX6 +,PDHX -,FABP7 +" : node605
+"SIRT6 +" : node606
+"FOXO3 +,MYOCD -,GALT +,ACTG2 -" : node607
+"HYOU1 +" : node608
+"HSF1 +,GUCA2B -,HSD17B6 -,POLK +,BAG3 -,GTF3A -" : node609
+"SERPINF1 +" : node610
+"LY96 +" : node611
+"IVL +" : node612
+"PDCD1 +" : node613
+"NR1H4 +,FABP6 +,KRT13 +,ABCB4 +,ABCC4 -,UGT2B4 -,STK11 +,SCARB1 +" : node614
+"HSP90AA1 +,POU4F1 +" : node615
+"KIAA0101 +" : node616
+"ALOX15 +" : node617
+"NR0B2 +" : node618
+"PCNA +" : node619
+"EIF2AK1 +" : node620
+"LAMA3 +" : node621
+"HINFP +" : node622
+"FGF19 +" : node623
+"GREB1 +" : node624
+"KRT19 +" : node625
+"NRF1 +,CAPNS1 +,SLC46A1 +,SPAST +,SOX11 +" : node626
+"UGT1A4 +" : node627
+"DCT +" : node628
+"ATF4 +,APOE +,DDIT4 +,DDR2 +,CHAC1 +,NUPR1 +,MSL1 -,FGF21 +,SIGMAR1 +" : node629
+"IFNA13 +" : node630
+"BAD +" : node631
+"EPAS1 +,MSC +,CTLA4 +,LTA -" : node632
+"OXTR +" : node633
+"PCK2 +" : node634
+"TBP +,LIN28B +,FUS -" : node635
+"SAA2 +" : node636
+"SOX18 +" : node637
+"MEF2A +" : node638
+"HPGD +" : node639
+"CITED2 +" : node640
+"MYEF2 +" : node641
+"STAT6 +,CCL26 +,CNR1 +,CCL17 +,NCOA3 +,IL1R1 +,SFPQ -" : node642
+"CYP11A1 +" : node643
+"CYP17A1 +" : node644
+"DAB2 +" : node645
+"SULT2A1 +" : node646
+"SIX3 +" : node647
+"FCER2 +" : node648
+"EAPP +" : node649
+"BCAR1 +" : node650
+"TMPO +" : node651
+"SLC9A3 +" : node652
+"NAB2 +" : node653
+"LHB +" : node654
+"UBE2S +" : node655
+"WNT4 +" : node656
+"ADAMTS1 +" : node657
+"ENG +" : node658
+"MPL +" : node659
+"GP9 +" : node660
+"TK1 +,POU2F2 +,POU2AF1 +,TNFRSF17 +,IGH +,ARID1A +,ARID1B +" : node661
+"COL1A1 +" : node662
+"CD4 +" : node663
+"TAF7 +" : node664
+"SULT1E1 +" : node665
+"NR3C1 +,RPS6KA3 +,ELK1 -,CALD1 +" : node666
+"SLC19A1 +" : node667
+"KRT5 +" : node668
+"HSD17B1 +" : node669
+"ECM1 +" : node670
+"CRABP2 +" : node671
+"BRS3 +" : node672
+"RETN +" : node673
+"STAR +" : node674
+"SFTPD +" : node675
+"S100A9 +" : node676
+"HSD17B11 +" : node677
+"HDAC4 +,TGIF2 +,TGIF1 +,SOX3 -" : node678
+"MEF2C +" : node679
+"MMP10 +,ZNF267 -" : node680
+"HDC +" : node681
+"SLC2A4 +,SLC2A4RG +" : node682
+"CDC6 +" : node683
+"ITGA2B +" : node684
+"DACH1 +" : node685
+"EPOR +" : node686
+"GP1BA +" : node687
+"CCR4 +" : node688
+"IL2RA +" : node689
+"STAT5B +" : node690
+"PHB +" : node691
+"DR1 +" : node692
+"LHCGR +,NR2C2 +" : node693
+"RAD51 +" : node694
+"VEGFC +" : node695
+"SLC5A1 +" : node696
+"CHST4 +" : node697
+"IL12RB2 +" : node698
+"TOP3A +" : node699
+"HAS2 +" : node700
+"HOXB13 +" : node701
+"APC +,AMHR2 -,SGK1 -,CEBPZ +,MLH1 -,COL11A1 -" : node702
+"ATP2C1 +" : node703
+"CREBBP +,INSM1 +" : node704
+"DBH +" : node705
+"ARHGEF1 +" : node706
+"TEK +" : node707
+"CDX2 +,SLC15A1 +,HEPH +,FUT2 +,MEP1A +,AXIN2 +" : node708
+"ERVW-1 +" : node709
+"S100A4 +" : node710
+"ASCL1 +" : node711
+"DST +" : node712
+"TAP1 +" : node713
+"IRF2 +,IFNGR1 -" : node714
+"MAPK14 +" : node715
+"CARD11 +" : node716
+"DNASE2 +" : node717
+"CYP27A1 +" : node718
+"ELMO3 +" : node719
+"DNMT3B +" : node720
+"CLDN3 +" : node721
+"COL11A2 +,SP7 +" : node722
+"CENPH +" : node723
+"CERS2 +" : node724
+"COPS5 +" : node725
+"BSG +" : node726
+"AHR +,AHRR +,RFC3 +" : node727
+"ALOX12 +" : node728
+"BLMH +" : node729
+"LRP5 +" : node730
+"ID4 +" : node731
+"ITGA5 +" : node732
+"ITGAD +" : node733
+"HRAS +" : node734
+"FMR1 +" : node735
+"FXR2 +" : node736
+"GCLC +" : node737
+"ADIPOQ +" : node738
+"SOX9 +,SOX10 -,DCC +,POU3F2 -,GNRH1 -,PDE5A +,RXFP2 +,PRAME -" : node739
+"TIMP3 +" : node740
+"UTRN +,EN1 -" : node741
+"MICB +" : node742
+"MUC6 +" : node743
+"PRSS50 +" : node744
+"PRNP +" : node745
+"PTTG1 +,PTTG1IP +,RAC1 +,LGALS1 +,ID3 +,DOCK1 +,CDC42 +" : node746
+"SLC19A3 +" : node747
+"SLC5A8 +" : node748
+"APOA5 +" : node749
+"SCD5 +" : node750
+"TUBB3 +" : node751
+"GRIN2B +" : node752
+"MAOB +,CDCA7L -" : node753
+"CXADR +" : node754
+"POU5F1 +,SOX2 +,TBX18 -,T -,ITGA6 +,LEFTY1 +,THY1 +,TDGF1 +,ZFP42 +,HLX -,EOMES -,DLX5 -,ISL1 -,POU4F2 -,NTRK3 +,PGA5 +,PLAC1 -,ASXL1 +,PRDM14 +,IBSP -" : node755
+"JAG1 +,KDM4C +" : node756
+"KIT +" : node757
+"TRAP +" : node758
+"TYR +" : node759
+"BEST1 +,OTX1 +" : node760
+"ALDOB +" : node761
+"E2F2 +" : node762
+"POU1F1 +,GHR +,LHX4 +" : node763
+"SMAD4 +,BTRC -,RUNX1T1 +" : node764
+"CPT1B +" : node765
+"FABP4 +" : node766
+"CD36 +" : node767
+"APOB +" : node768
+"TSHR +" : node769
+"TG +" : node770
+"LCT +" : node771
+"UGT2B7 +" : node772
+"MBD2 +" : node773
+"RELN +" : node774
+"GAD1 +" : node775
+"CGA +,DLX3 +,THRB -" : node776
+"FGF4 +" : node777
+"CNTNAP2 +" : node778
+"BAMBI +" : node779
+"ETV2 +" : node780
+"HLA-DRA +" : node781
+"PSMC5 +" : node782
+"DACT3 +" : node783
+"FSHR +" : node784
+"CLDN7 +" : node785
+"BIRC3 +" : node786
+"SPARC +" : node787
+"MKI67 +" : node788
+"RUNX1 +,SYMPK -,MYH10 -,BAALC +,L3MBTL1 -" : node789
+"NR0B1 +" : node790
+"TGFB1I1 +" : node791
+"PRDX5 +" : node792
+"MAPK7 +" : node793
+"CYP2E1 +" : node794
+"RHOA +" : node795
+"SELP +" : node796
+"SRF +,PLG +,SAMD4A +" : node797
+"ATP1B1 +" : node798
+"MECOM +" : node799
+"UGT1A10 +" : node800
+"UGT1A8 +" : node801
+"ACAT2 +" : node802
+"CDH17 +" : node803
+"TPH1 +" : node804
+"CCNG2 +" : node805
+"NR5A1 +" : node806
+"ABCC6 +" : node807
+"RHO +" : node808
+"IRS2 +" : node809
+"TSHB +" : node810
+"GH2 +" : node811
+"CD34 +" : node812
+"PBX1 +,HOXB1 +" : node813
+"TAGLN +" : node814
+"NOV +" : node815
+"VCP +" : node816
+"TFDP1 +" : node817
+"AIP +,NFKB2 -,SND1 -,RSF1 -" : node818
+"CCL21 +" : node819
+"AATF +" : node820
+"ABL1 +" : node821
+"CEBPG +" : node822
+"CREB5 +,ATP6V0E1 +,TNFRSF11B -,TGFBR3 +,RDX -,RASGRP3 -,MX1 +,MAPKAPK3 +" : node823
+"CLOCK +" : node824
+"BTF3 +,SSPN -,RRAS2 -,MADCAM1 -,MRVI1 -,HPSE2 +,ABL2 +" : node825
+"EPHB2 +" : node826
+"CDX1 +" : node827
+"BCL11B +" : node828
+"ATOH1 +,HES6 +" : node829
+"BTAF1 +" : node830
+"ATF6 +,MAFA -,SLC2A2 -,NKX6-1 -,GLP1R -,DNAJC3 +,NUCB1 +,WBP1 +" : node831
+"EGR3 +" : node832
+"GLI1 +,EGR2 -,CYR61 +" : node833
+"PDGFRA +" : node834
+"H2AFX +" : node835
+"ELF1 +,MEIS1 +,DNTT +" : node836
+"ELF3 +,KRT4 -" : node837
+"ELF2 +" : node838
+"ELL +" : node839
+"ERCC2 +,LAMTOR5 -" : node840
+"ERF +,ETS2 -,TAL1 -,CSF2 -,CHRNE -,GABPA -,TOMM70A -" : node841
+"E2F4 +,PLK1 -,TOPBP1 -,TTK -" : node842
+"HCFC1 +" : node843
+"E2F8 +" : node844
+"CRX +,RS1 +" : node845
+"NR2E3 +" : node846
+"CTBP1 +" : node847
+"DEK +" : node848
+"CUX1 +" : node849
+"WNT5A +" : node850
+"HLF +,DBP +" : node851
+"SP2 +" : node852
+"SPDEF +,SPINK4 +,SQSTM1 +" : node853
+"AGR2 +" : node854
+"SOX6 +" : node855
+"SIN3A +" : node856
+"SIM2 +" : node857
+"SETBP1 +,PTGER2 -" : node858
+"SF1 +,TCERG1 -" : node859
+"SMARCB1 +" : node860
+"SMURF2 +,KLF5 -,FASN -,CDT1 -" : node861
+"SMARCA1 +" : node862
+"SMARCA4 +" : node863
+"SIX1 +" : node864
+"SKI +" : node865
+"TFAP2B +" : node866
+"TFAP2C +,GPX1 +" : node867
+"TFCP2 +" : node868
+"TLX1 +,NR4A3 +" : node869
+"TBX2 +" : node870
+"TBX5 +,GJA5 +" : node871
+"SPIB +" : node872
+"ZNF382 +,HMGA2 -" : node873
+"ZNRD1 +" : node874
+"ZNF224 +" : node875
+"ZNF24 +" : node876
+"ZNF300 +" : node877
+"ZFP36L1 +" : node878
+"ZHX2 +" : node879
+"RBMX +,ROS1 -,JUND -,SOX4 -,HDAC8 -,ZIC1 -,BCL2L13 -,EIF3M -,FAM57A -" : node880
+"ZBTB7A +" : node881
+"NFATC1 +" : node882
+"ZBTB2 +,ARF1 -" : node883
+"ZEB2 +,MEOX2 -" : node884
+"ZBTB16 +" : node885
+"WWTR1 +,LTBR +,BAK1 +" : node886
+"WWP1 +,ERBB4 -" : node887
+"VHL +,NMU -" : node888
+"USF2 +,IGF2R +,ATP5A1 +" : node889
+"HOXB4 +" : node890
+"PIGR +" : node891
+"ASCL2 +" : node892
+"CD2 +,TCFL5 -" : node893
+"CEACAM5 +" : node894
+"USF1 +,SLC22A2 +,SERBP1 +,GATA5 +" : node895
+"TWIST2 +" : node896
+"TSC22D3 +" : node897
+"TRRAP +" : node898
+"TRIM28 +" : node899
+"TRIM16 +,DES -" : node900
+"TRERF1 +,LILRB2 -,LILRB4 -,LILRB1 -" : node901
+"ESRRA +" : node902
+"FOSB +" : node903
+"FOSL2 +" : node904
+"FOXA1 +,HSPA1A +,RPRM -,KRT7 +,LOXL2 +" : node905
+"UGT2B17 +" : node906
+"FOXA2 +,SOX14 +,TPO +,TTF2 +" : node907
+"PHOX2B +,ALK +,MSX1 -,DLK1 -,NOTCH3 -,APOD +,FOXE1 -" : node908
+"TLX2 +" : node909
+"FOXD3 +,CYFIP2 +" : node910
+"FOXF2 +,MT1E -,MT1F -,PSG7 -,WASF2 +" : node911
+"GLI2 +,FOXF1 +,WNT2B +" : node912
+"FOXL2 +" : node913
+"FOXQ1 +,RSPO2 +,WNT3A +" : node914
+"FOXP2 +,NKX2-1 -" : node915
+"FOXO4 +" : node916
+"HBP1 +,NCF1 -" : node917
+"HDAC11 +,TNFSF4 +" : node918
+"HDAC3 +" : node919
+"HMGB2 +,GFI1B +" : node920
+"KCNIP3 +,GCM1 -,SLC8A3 -,PDYN -" : node921
+"HAND2 +,PHOX2A +" : node922
+"GTF2I +" : node923
+"HHEX +" : node924
+"HEY2 +" : node925
+"HDGF +,VEGFB +" : node926
+"HOXC6 +" : node927
+"HSF2 +,MAP2K4 -" : node928
+"HOXA5 +" : node929
+"HOXA7 +,KRT10 +" : node930
+"HOXB7 +,DAPK1 -,THBS2 -" : node931
+"HOXC13 +" : node932
+"HNF4G +" : node933
+"HOPX +,FLG +" : node934
+"HOXA1 +" : node935
+"HNF1A +,TM4SF1 -,SLC22A9 +,SLC22A10 +" : node936
+"JDP2 +" : node937
+"ING2 +" : node938
+"ILF3 +,ACRV1 +,ILF2 +" : node939
+"IKBKB +" : node940
+"HTATIP2 +" : node941
+"LMO4 +,DLG4 -,LMO1 +,LMO3 -" : node942
+"TCF3 +,EXO1 -,CR2 +" : node943
+"LHX2 +" : node944
+"KLF8 +" : node945
+"LDB1 +" : node946
+"KLF15 +" : node947
+"RBP3 +,ZNF239 -" : node948
+"KLF10 +,PTGS1 +" : node949
+"KHDRBS1 +" : node950
+"KAT2B +" : node951
+"KAT5 +,GMPS -,APBB1 +" : node952
+"LMX1B +,COL4A4 +" : node953
+"MAFF +,MAF +,ITGB7 +" : node954
+"LRRFIP1 +" : node955
+"MAML1 +" : node956
+"MAZ +,TSG101 +,REG4 -" : node957
+"MBD1 +,SETDB1 -" : node958
+"MECP2 +" : node959
+"MED1 +" : node960
+"MEN1 +,CDKN2C -" : node961
+"MLLT3 +,SCNN1A +" : node962
+"MLLT10 +" : node963
+"MKL1 +" : node964
+"MSX2 +" : node965
+"MTA2 +" : node966
+"MTF1 +,MCAT +" : node967
+"MZF1 +" : node968
+"MYOD1 +" : node969
+"MYOG +,ART1 +" : node970
+"MYF5 +" : node971
+"MYF6 +" : node972
+"NCOA2 +" : node973
+"NCOA4 +" : node974
+"NCOA6 +" : node975
+"NCOR1 +" : node976
+"NELFCD +" : node977
+"NCOA1 +" : node978
+"NFATC3 +" : node979
+"NFE2L2 +,MTHFR +" : node980
+"NFIX +" : node981
+"NFIL3 +" : node982
+"NFIC +,HMGB1 +,MATN1 -,SMUG1 +,SLC34A2 +,ACT +,C4BPB +" : node983
+"NFYA +,CBS +,CYP2A6 +" : node984
+"NR1H3 +" : node985
+"ABCG1 +" : node986
+"ABCG4 +" : node987
+"NR1H2 +" : node988
+"NFYC +" : node989
+"NFYB +" : node990
+"NKX2-5 +,DACT1 -,DACT2 -" : node991
+"NHLH2 +,MAOA +" : node992
+"NPM1 +,TAF1A +" : node993
+"NRL +" : node994
+"NR2F2 +" : node995
+"NR3C2 +,CABIN1 -,CCR6 +" : node996
+"PAX8 +" : node997
+"PIAS2 +" : node998
+"PIAS1 +,PRMT1 -" : node999
+"PAWR +" : node1000
+"PA2G4 +" : node1001
+"OTX2 +" : node1002
+"PITX1 +,TRIB2 -" : node1003
+"PITX2 +,LHX6 +" : node1004
+"PLAGL2 +,METAP2 +,SFTPC +" : node1005
+"PLAGL1 +" : node1006
+"PLAG1 +,CRLF1 +" : node1007
+"RELB +" : node1008
+"RBPJ +" : node1009
+"REL +" : node1010
+"RXRA +,IL2RG +" : node1011
+"TGFB3 +" : node1012
+"DDB1 +" : node1013
+"CYP24A1 +" : node1014
+"TRAF2 +" : node1015
+"BIRC2 +" : node1016
+"KCNQ3 +" : node1017
+"KCNQ2 +" : node1018
+"POR +" : node1019
+"PVR +" : node1020
+"TDRD1 +" : node1021
+"MIA +" : node1022
+"RET +" : node1023
+"GJB1 +" : node1024
+"ERP44 +" : node1025
+"NPC1L1 +" : node1026
+"CYP2C9 +" : node1027
+"DGKG +" : node1028
+"NQO1 +,NFE2L1 +" : node1029
+"GSTA1 +" : node1030
+"PCGF2 +" : node1031
+"RFWD2 +,RFWD2 -" : node1032
