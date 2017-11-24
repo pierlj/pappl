@@ -48,6 +48,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         # self.color.setEnabled(False)
         self.color_1.clicked.connect(self.afficheColor)
         # self.color_1.setEnabled(False)
+        self.nCompo.clicked.connect(self.nComposantesAux)
+        # self.nCompo.setEnabled(False)"
         
     def alerte(a):
         msglabel = QtWidgets.QLabel("Attention Cytoscape.exe n'est pas lancé ! \nVeuillez lancer l'application avant d'afficher un graphe.")
@@ -82,6 +84,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     def reduction(self):
         self.fname = self.graph_2.currentItem().text()
         l=len(self.grapheLoc[self.graph_2.currentRow()])
+        print(self.grapheLoc[self.graph_2.currentRow()])
         reduced=self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif"
         self.compaction(self.grapheLoc[self.graph_2.currentRow()],self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-hash.txt", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-logic.txt")
         self.grapheLoc.append(reduced)
@@ -101,7 +104,9 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         os.system(command)
         self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
         self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
-        
+    
+    def nComposantesAux(self):
+        self.nComposantes(self.table)
         
     def afficheColor(self):
         self.colorGraphe(self.table)
@@ -834,6 +839,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         for line in correleSep:
             file.write(line+"\n")
         file.close()
+        
+    
 
     def nbComposantes(self,table):
         nb=0
@@ -841,6 +848,38 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             if (line[1]>nb):
                 nb=line[1]
         return nb
+    
+    def nComposantes(self,tableTuple):
+        n=self.nbComposantes(tableTuple)
+        listeComposante=[[] for _ in range(n)]
+        for line in tableTuple:
+            listeComposante[line[1]-1].append(line[0])
+        print(listeComposante)
+        
+        file=open(self.grapheLoc[self.graph_3.currentRow()],'r')
+        base=file.readlines()
+        file.close()
+        graphesComposantes=[]
+        for compo in listeComposante:
+            current=[]
+            
+            for line in base:
+                lineSliced=line[:-1]
+                edge=lineSliced.split("\t")
+                
+                if (edge[2] in compo and edge[2] in compo ):
+                    current.append(line)
+            graphesComposantes.append(current)
+        
+        directory=os.path.dirname(self.grapheLoc[self.graph_3.currentRow()])+"\\Composantes"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        for i in range(len(graphesComposantes)):
+            strOpen=directory+"\\composante"+str(i+1)+".sif"
+            file=open(strOpen,'w')
+            for line in graphesComposantes[i]:
+                file.write(line)
+                file.write("\n")
         
     def lastAns(self,lines):
         res=0
