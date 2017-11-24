@@ -152,7 +152,7 @@ def identificationColor():
 	# Affichage des tuples
 	#for tuple in listeTuples:
 	#	print(tuple) 
-	# print(listeTuples)
+	
 	tableTuple=[]
 	for i in range(len(listeTuples)):
 		tuple=listeTuples[i]
@@ -162,70 +162,48 @@ def identificationColor():
 				tableTuple.append([node.split(" ")[0],i,-1])
 			else:
 				tableTuple.append([node.split(" ")[0],i,1])
-	# print(tableTuple)
+	print(tableTuple)
 	
 	cy = CyRestClient()
-	# net1 = cy.network.create_from("D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graphe_0.2_MEF.sif")
-	# net1.create_node_column("composante", data_type='Integer',is_immutable=False)
-	# net1.create_node_column("signe",data_type='Integer',is_immutable=False)
+	net1 = cy.network.create_from("D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graphe_0.2_MEF.sif")
+	net1.create_node_column("composante", data_type='Integer',is_immutable=False)
+	net1.create_node_column("signe",data_type='Integer',is_immutable=False)
 	
 	
-	# table=net1.get_node_table()
-	# nodeTable={}
-	# nodes=net1.get_nodes()
-	# for node in nodes:
-		# nodeTable[net1.get_node_value(node)['name']]=node
+	table=net1.get_node_table()
+	nodeTable={}
+	nodes=net1.get_nodes()
+	for node in nodes:
+		nodeTable[net1.get_node_value(node)['name']]=node
 	
 	
-	# for line in tableTuple:
-		
-		# table.set_value(nodeTable[line[0]],"composante",line[1])
-		# table.set_value(nodeTable[line[0]],"signe",line[2])
-		
-	# net1.update_node_table(table,network_key_col='name', data_key_col='name')
-
-	
-	n=nbComposantes(tableTuple)
-	listeComposante=[[] for _ in range(n)]
 	for line in tableTuple:
-		listeComposante[line[1]-1].append(line[0])
-	print(listeComposante)
-	
-	file=open("D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graphe_0.2_MEF.sif",'r')
-	base=file.readlines()
-	file.close()
-	graphesComposantes=[]
-	for compo in listeComposante:
-		current=[]
 		
-		for line in base:
-			lineSliced=line[:-1]
-			edge=lineSliced.split("\t")
-			
-			if (edge[2] in compo and edge[2] in compo ):
-				current.append(line)
-		graphesComposantes.append(current)
-		print(current)
-	directory="D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graph"
-	if not os.path.exists(directory):
-		os.makedirs(directory)
-	for i in range(len(graphesComposantes)):
-		strOpen="D:\\Documents\\Centrale\\Ei2\\PAPPL\\App\\graph\\c"+str(i+1)+".sif"
-		file=open(strOpen,'w')
-		for line in graphesComposantes[i]:
-			file.write(line)
-			file.write("\n")
+		table.set_value(nodeTable[line[0]],"composante",line[1])
+		table.set_value(nodeTable[line[0]],"signe",line[2])
+		
+	net1.update_node_table(table,network_key_col='name', data_key_col='name')
+
+	style1 = cy.style.create('sample_style1')
 	
+	points = [{
+	'value': '1.0',
+	'lesser':'white',
+	'equal':'white',
+	'greater': 'white'
+	},{
+	'value': '20.0',
+	'lesser':'green',
+	'equal':'green',
+	'greater': 'green'
+	}]
+
 	
+	style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
 	
 
-def nbComposantes(table):
-	nb=0
-	for line in table:
-		if (line[1]>nb):
-			nb=line[1]
-	return nb
-		
+
+	cy.style.apply(style1,net1)	
 
 
 
