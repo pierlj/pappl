@@ -48,6 +48,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         # self.color.setEnabled(False)
         self.color_1.clicked.connect(self.afficheColor)
         # self.color_1.setEnabled(False)
+        self.nCompo.clicked.connect(self.nComposantesAux)
+        # self.nCompo.setEnabled(False)"
         
     def alerte(a):
         msglabel = QtWidgets.QLabel("Attention Cytoscape.exe n'est pas lancé ! \nVeuillez lancer l'application avant d'afficher un graphe.")
@@ -64,7 +66,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     def doneR(a):
         msglabel = QtWidgets.QLabel("La réduction est finie.")
         dialog = QtWidgets.QDialog()
-        dialog.setWindowTitle("Attention")
+        dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
         ok.clicked.connect(dialog.accept)
         ok.setDefault(True)
@@ -76,7 +78,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     def doneI(a):
         msglabel = QtWidgets.QLabel("L'identification des composantes est finie.")
         dialog = QtWidgets.QDialog()
-        dialog.setWindowTitle("Attention")
+        dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
         ok.clicked.connect(dialog.accept)
         ok.setDefault(True)
@@ -87,6 +89,18 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         
     def doneC(a):
         msglabel = QtWidgets.QLabel("La coloration est finie.")
+        dialog = QtWidgets.QDialog()
+        dialog.setWindowTitle("Fini")
+        ok = QtWidgets.QPushButton('OK', dialog)
+        ok.clicked.connect(dialog.accept)
+        ok.setDefault(True)
+        dialog.layout = QtWidgets.QGridLayout(dialog)
+        dialog.layout.addWidget(msglabel, 0, 0, 1, 3)
+        dialog.layout.addWidget(ok, 1, 1)
+        dialog.exec_()
+
+    def pb(a):
+        msglabel = QtWidgets.QLabel("Attention : il manque les fichiers necéssaires pour effectuer cette opération.")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Attention")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -135,14 +149,18 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         else:
             command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --time-limit="+str(self.time.value())+" --opt-mode=optN --enum-mode=cautious --quiet=1 > "+ os.path.splitext(input)[0] +"-colorations.txt"
         os.system(command)
-        self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
-        self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
-        self.doneI()
-        
-        
+        try:
+            self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+            self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+            self.doneI()
+        except (IndexError, FileNotFoundError):
+            self.pb()
+            
     def afficheColor(self):
         self.colorGraphe(self.table)
-        self.doneC()
+        
+    def nComposantesAux(self):
+        self.nComposantes(self.table)
             
     def lancement(self):
         os.startfile(r'C:\Program Files\Cytoscape_v3.5.1\Cytoscape.exe')
@@ -857,6 +875,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
             cy.style.apply(style1,net1)
             cy.layout.apply(name='organic',network=net1)
+            self.doneC()
     
     def processASP(self,path):
         file=open(path,'r')
@@ -888,7 +907,36 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                 line=lines[k+1]
         return line
     
+    def nComposantes(self,tableTuple):
+        n=self.nbComposantes(tableTuple)
+        listeComposante=[[] for _ in range(n)]
+        for line in tableTuple:
+            listeComposante[line[1]-1].append(line[0])
+        print(listeComposante)
+        file=open(self.grapheLoc[self.graph_3.currentRow()],'r')
+        base=file.readlines()
+        file.close()
+        graphesComposantes=[]
+        for compo in listeComposante:
+            current=[]
+            
+            for line in base:
+                lineSliced=line[:-1]
+                edge=lineSliced.split("\t")
+                
+                if (edge[2] in compo and edge[2] in compo ):
+                    current.append(line)
+            graphesComposantes.append(current)
         
+        directory=os.path.dirname(self.grapheLoc[self.graph_3.currentRow()])+"\\Composantes"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        for i in range(len(graphesComposantes)):
+            strOpen=directory+"\\composante"+str(i+1)+".sif"
+            file=open(strOpen,'w')
+            for line in graphesComposantes[i]:
+                file.write(line)
+                file.write("\n")
         
     def main(self):
         self.show()
