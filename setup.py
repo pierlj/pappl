@@ -27,9 +27,9 @@ options = {
 }
 
 setup(
-    name = "Iguane",
+    name = "Iguana",
     options = options,
-    version = "2.2",
-    description = 'Iguane (feat. iggy-POC)',
+    version = "2.4",
+    description = 'Iguana (feat. iggy-POC)',
     executables = executables
 )
