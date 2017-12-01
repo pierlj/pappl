@@ -17,7 +17,7 @@ class Ui_Form(object):
         icon.addPixmap(QtGui.QPixmap("Iguane.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Form.setWindowIcon(icon)
         Form.setWindowOpacity(1.0)
-        Form.setStyleSheet("background-color:rgba(255, 170, 0, 75);")
+        Form.setStyleSheet("")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -158,3 +158,14 @@ class Ui_Form(object):
         self.color_1.setText(_translate("Form", "Colorer le graphe"))
         self.nCompo.setText(_translate("Form", "N Composantes"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Form", "Coloration d\'un graphe"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
+
