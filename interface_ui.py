@@ -141,7 +141,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Iguane"))
+        Form.setWindowTitle(_translate("Form", "Iguana"))
         self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-family:\'trebuchet MS,sans-serif\'; font-size:15px; font-variant:small-caps;\">Affichage de graphe grâce à Cytoscape</span></p></body></html>"))
         self.launch.setText(_translate("Form", "Lancer Cytoscape"))
         self.load.setText(_translate("Form", "Charger un graphe"))
