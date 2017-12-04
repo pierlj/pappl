@@ -64,7 +64,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.exec_()
     
     def doneR(a):
-        msglabel = QtWidgets.QLabel("La réduction est finie.")
+        msglabel = QtWidgets.QLabel("\t\tLa réduction est finie.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -76,7 +76,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.exec_()
     
     def doneI(a):
-        msglabel = QtWidgets.QLabel("L'identification des composantes est finie.")
+        msglabel = QtWidgets.QLabel("\t\tL'identification des composantes est finie.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -88,7 +88,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.exec_()
         
     def doneC(a):
-        msglabel = QtWidgets.QLabel("La coloration est finie.")
+        msglabel = QtWidgets.QLabel("\t\tLa coloration est finie.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -100,7 +100,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.exec_()
     
     def doneN(a):
-        msglabel = QtWidgets.QLabel("La coloration est finie.")
+        msglabel = QtWidgets.QLabel("\t\tL'exportation des composantes est terminée.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
