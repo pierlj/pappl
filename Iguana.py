@@ -157,9 +157,9 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         output=dir_path+"\ASPout.txt"
         #option apres input : --opt-mode=optN --enum-mode=cautious --quiet=1
         if (self.time.value()==0):
-            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --opt-mode=optN --enum-mode=cautious --quiet=1 > "+ os.path.splitext(input)[0] +"-colorations.txt"
+            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --opt-mode=optN --enum-mode=cautious --parallel-mode=2  > "+ os.path.splitext(input)[0] +"-colorations.txt"
         else:
-            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --time-limit="+str(self.time.value())+" --opt-mode=optN --enum-mode=cautious --quiet=1 > "+ os.path.splitext(input)[0] +"-colorations.txt"
+            command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --time-limit="+str(self.time.value())+" --opt-mode=optN --enum-mode=cautious > "+ os.path.splitext(input)[0] +"-colorations.txt"
         os.system(command)
         try:
             self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
