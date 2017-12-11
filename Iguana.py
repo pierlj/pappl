@@ -510,7 +510,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                 G.remove_nodes_from(suppression)
                 NxnbreNoeudsReduction=len(G.nodes())
                 G=nx.relabel_nodes(G,rename)
-                listeConsistent
+                #listeConsistent
                 
             DicoNodes={}
             DicoInverse={}
@@ -624,8 +624,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                     target=target.split("\"")[1]
             for sousTuple1 in source.split(","):
                 # Pour chaque sousNoeud de tuple2
-                    for sousTuple2 in target.split(","):
-                        node1=sousTuple1.split(" ")[0]
+                for sousTuple2 in target.split(","):
+                    node1=sousTuple1.split(" ")[0]
                     signeSource=sousTuple1.split(" ")[1]
                     #print(sousTuple1+ " to "+node1+" "+signeSource)
                     node2=sousTuple2.split(" ")[0]
@@ -918,6 +918,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             if( "Answer" in lines[k]):
                 res=res+1
                 line=lines[k+1]
+        print(line)
         return line
     
     def nComposantes(self,tableTuple):
@@ -934,13 +935,15 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         graphesComposantes=[]
         for compo in listeComposante:
             current=[]
-            
-            for line in base:
-                lineSliced=line[:-1]
-                edge=lineSliced.split("\t")
-                
-                if (edge[0] in compo and edge[2] in compo ):
-                    current.append(line)
+            if (len(compo)==1):
+                current.append(compo[0])
+            else:
+                for line in base:
+                    lineSliced=line[:-1]
+                    edge=lineSliced.split("\t")
+                    
+                    if (edge[0] in compo and edge[2] in compo ):
+                        current.append(line)
             graphesComposantes.append(current)
         
         directory=os.path.dirname(self.grapheLoc[self.graph_3.currentRow()])+"\\Composantes"
