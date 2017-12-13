@@ -878,13 +878,13 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             'equal':'blue',
             'greater': 'blue'
             },{
-            'value': '20.0',
+            'value': '1.0',
             'lesser':'red',
             'equal':'red',
             'greater': 'red'
             }]
             
-            points[1]["value"]=self.nbComposantes(tableTuple)
+            points[1]["value"]=self.nbComposantes(tableTuple)-1
             style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
             cy.style.apply(style1,net1)
             cy.layout.apply(name='organic',network=net1)
