@@ -2,9 +2,10 @@
 """
 Created on Wed Nov 15 22:57:38 2017
 
-@author: Jules
+@author: Jules Paris et Pierre Le Jeune
 """
 
+#importation des modules nécessaires à l'application 
 import sys
 import os
 from PyQt5 import QtWidgets
@@ -12,16 +13,16 @@ from py2cytoscape.data.cyrest_client import CyRestClient
 import psutil
 import networkx as nx
 
-file_dir = os.path.dirname(os.path.realpath('__file__'))
-sys.path.append(file_dir)
 
+#import du fichier génrant l'interface graphique
 import interface_ui
 
 global dir_path
 
 dir_path = os.path.dirname(os.path.realpath('__file__'))
+sys.path.append(dir_path)
 
-
+#classe principale permettant de lancer l'application
 class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     
     fname = ""
@@ -29,12 +30,11 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     table=[]
     
     def __init__(self):
-        
-        
         super(Pappl, self).__init__()
         self.setupUi(self)
         self.connectActions()
-
+        
+    #fonction permettant de lier les boutons de l'interface avec les fonctions correspondantes
     def connectActions(self):
         self.load.clicked.connect(self.loading)
         self.load_2.clicked.connect(self.loading)
@@ -51,6 +51,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         self.nCompo.clicked.connect(self.nComposantesAux)
         # self.nCompo.setEnabled(False)"
         
+    #ouverture d'une fenetre d'erreur lorsque cytoscape n'est pas lancé    
     def alerte(a):
         msglabel = QtWidgets.QLabel("Attention Cytoscape.exe n'est pas lancé ! \nVeuillez lancer l'application avant d'afficher un graphe.")
         dialog = QtWidgets.QDialog()
@@ -63,6 +64,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
     
+    #affichage d'un message lorsque la réduction est terminée
     def doneR(a):
         msglabel = QtWidgets.QLabel("\t\tLa réduction est finie.\t\t")
         dialog = QtWidgets.QDialog()
@@ -75,6 +77,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
     
+    #affichage d'un message lorsque l'identification des colorations est terminée
     def doneI(a):
         msglabel = QtWidgets.QLabel("\t\tL'identification des composantes est finie.\t\t")
         dialog = QtWidgets.QDialog()
@@ -86,7 +89,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(msglabel, 0, 0, 1, 3)
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
-        
+    
+    #affichage d'un message lorsque la coloration du graphe est terminée   
     def doneC(a):
         msglabel = QtWidgets.QLabel("\t\tLa coloration est finie.\t\t")
         dialog = QtWidgets.QDialog()
@@ -99,6 +103,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
     
+    #affichage d'un message lorsque l'exportation des composantes est terminée
     def doneN(a):
         msglabel = QtWidgets.QLabel("\t\tL'exportation des composantes est terminée.\t\t")
         dialog = QtWidgets.QDialog()
@@ -110,7 +115,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(msglabel, 0, 0, 1, 3)
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
-
+    
+    #affichage d'un message lorsque l'on veut effectuer une tâche sans que les fichiers nécessaires soient présents dans le répertoire correspondant
     def pb(a):
         msglabel = QtWidgets.QLabel("Attention : il manque les fichiers necéssaires pour effectuer cette opération.\nMerci d'effectuer d'abord la réduction du graphe.")
         dialog = QtWidgets.QDialog()
@@ -123,6 +129,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
     
+    #fonction determinant si Cytoscape est lancé
     def isRunning(s):
         for pid in psutil.pids():
             p=psutil.Process(pid)
@@ -130,6 +137,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                 return True
         return False
     
+    #chargement des graphes en ouvrant un explorateur de fichier
     def loading(self):
         nom=QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', "C:\\", '*.sif')
         if (len(nom[0])>0):
@@ -140,7 +148,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             self.display.setEnabled(True)
             self.reduc.setEnabled(True)
             self.color.setEnabled(True)
-    
+            
+    #lancement de la réduction, appel de l'algorithme Iggy-poc avec les bons fichiers
     def reduction(self):
         self.fname = self.graph_2.currentItem().text()
         l=len(self.grapheLoc[self.graph_2.currentRow()])
@@ -150,6 +159,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         self.graph.addItem(os.path.basename(str(reduced)))
         self.doneR()
 
+    #lancement, via commande dos du script asp avec clingo
+    #dépend des options sélectionnées dans l'application (temps d'exécution)
     def colorations(self):
         nbColor=0 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
         name = self.grapheLoc[self.graph_3.currentRow()]
@@ -167,17 +178,23 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             self.doneI()
         except (IndexError, FileNotFoundError):
             self.pb()
-            
+    
+    #lancement de la fonction d'affichage        
     def afficheColor(self):
         self.colorGraphe(self.table)
+    
         
     def nComposantesAux(self):
         self.nComposantes(self.table)
         self.doneN()
-            
+    
+    
+    #lancement de cytoscape --> si cytoscape n'est pas installé dans le bon répertoire, il y aura une erreur
+    #Il faudrait proposer une option dans l'application pour donner le chemin d'accès de cytoscape et le changer ici. 
     def lancement(self):
         os.startfile(r'C:\Program Files\Cytoscape_v3.5.1\Cytoscape.exe')
     
+    #affichage du graphe selectionné dans cytoscape
     def affichage(self):
         if not self.isRunning():
             self.alerte()
@@ -185,7 +202,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             cy = CyRestClient()
         
             style1 = cy.style.create('sample_style1')
-
+            #feuille de style cytoscape
             new_defaults = {
                     
             # Node defaults
@@ -363,6 +380,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         nouveauTuple=predecesseur+","+noeudSource
         return(nouveauTuple)
 
+    #fonction effectuant la réduction
     def compaction(self,input,out1,out2,out3):
         file=open(input,"r")
         data=file.readlines()
@@ -756,7 +774,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     
     
     
-    # Charger Dico des noeuds
+    # Fonction effectuant l'identifcation des colorations
     def identificationColor(self,path):
         Dico={}
         DicoInverse={}
@@ -847,7 +865,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             file.write("\""+tuple[0]+"\", "+str(tuple[1])+", "+str(tuple[2])+"\n")
         file.close()
     
-    
+    #affichage des colorations
     def colorGraphe(self,tableTuple):
         if not self.isRunning():
             self.alerte()
@@ -890,6 +908,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             cy.layout.apply(name='organic',network=net1)
             self.doneC()
     
+    #fonction qui transforme la sortie du script ASP afin qu'il soit compréhensible pour le script d'identification
     def processASP(self,path):
         file=open(path,'r')
         lines=file.readlines()
@@ -904,13 +923,15 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             file.write(line+"\n")
         file.close()
 
+    #renvoie le nombre de composantes obtenues
     def nbComposantes(self,table):
         nb=0
         for line in table:
             if (line[1]>nb):
                 nb=line[1]
         return (nb+1)
-        
+    
+    #renvoie la dernière réponse (optimum ou non) du script ASP    
     def lastAns(self,lines):
         res=0
         line=lines[0]
@@ -921,6 +942,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         print(line)
         return line
     
+    #extraction des n composantes et export des fichiers correspondants
     def nComposantes(self,tableTuple):
         print(tableTuple)
         n=self.nbComposantes(tableTuple)
