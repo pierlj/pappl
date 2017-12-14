@@ -27,6 +27,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     
     fname = ""
     grapheLoc=[]
+    grapheLoc2=[]
     table=[]
     
     def __init__(self):
@@ -142,6 +143,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         nom=QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', "C:\\", '*.sif')
         if (len(nom[0])>0):
             self.grapheLoc.append(nom[0])
+            self.grapheLoc2.append(nom[0])
             self.graph.addItem(os.path.basename(str(nom[0])))
             self.graph_2.addItem(os.path.basename(str(nom[0])))
             self.graph_3.addItem(os.path.basename(str(nom[0])))
@@ -152,9 +154,9 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     #lancement de la réduction, appel de l'algorithme Iggy-poc avec les bons fichiers
     def reduction(self):
         self.fname = self.graph_2.currentItem().text()
-        l=len(self.grapheLoc[self.graph_2.currentRow()])
-        reduced=self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif"
-        self.compaction(self.grapheLoc[self.graph_2.currentRow()],self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced.sif", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-hash.txt", self.grapheLoc[self.graph_2.currentRow()][:l-4]+"-reduced-logic.txt")
+        l=len(self.grapheLoc2[self.graph_2.currentRow()])
+        reduced=self.grapheLoc2[self.graph_2.currentRow()][:l-4]+"-reduced.sif"
+        self.compaction(self.grapheLoc2[self.graph_2.currentRow()],self.grapheLoc2[self.graph_2.currentRow()][:l-4]+"-reduced.sif", self.grapheLoc2[self.graph_2.currentRow()][:l-4]+"-reduced-hash.txt", self.grapheLoc2[self.graph_2.currentRow()][:l-4]+"-reduced-logic.txt")
         self.grapheLoc.append(reduced)
         self.graph.addItem(os.path.basename(str(reduced)))
         self.doneR()
@@ -163,7 +165,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     #dépend des options sélectionnées dans l'application (temps d'exécution)
     def colorations(self):
         nbColor=0 # possibilite de changer le nombre de reponse:  0 -> all answers n -> n answers
-        name = self.grapheLoc[self.graph_3.currentRow()]
+        name = self.grapheLoc2[self.graph_3.currentRow()]
         input=os.path.splitext(name)[0]+"-reduced-logic.txt"
         output=dir_path+"\ASPout.txt"
         #option apres input : --opt-mode=optN --enum-mode=cautious --quiet=1
@@ -233,8 +235,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             style1.create_discrete_mapping(column='interaction', 
                                         col_type='String', vp='EDGE_SOURCE_ARROW_SHAPE', mappings=kv_pair)
             
-            self.fname = self.grapheLoc[self.graph.currentRow()]
-            net1 = cy.network.create_from(self.grapheLoc[self.graph.currentRow()])
+            self.fname = self.grapheLoc2[self.graph.currentRow()]
+            net1 = cy.network.create_from(self.grapheLoc2[self.graph.currentRow()])
             cy.style.apply(style1,net1)
 
     def InversionTuple(self,node):
@@ -778,7 +780,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     def identificationColor(self,path):
         Dico={}
         DicoInverse={}
-        name = self.grapheLoc[self.graph_3.currentRow()]
+        name = self.grapheLoc2[self.graph_3.currentRow()]
         input=os.path.splitext(name)[0]+"-reduced-hash.txt"
         # Charger Dico des nodes
         
@@ -848,7 +850,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         # Affichage des tuples
         #for tuple in listeTuples:
         #	print(tuple) 
-        file=open(os.path.splitext(self.grapheLoc[self.graph_3.currentRow()])[0]+"-coloration-table.csv",'w')
+        file=open(os.path.splitext(self.grapheLoc2[self.graph_3.currentRow()])[0]+"-coloration-table.csv",'w')
         tableTuple=[]
         for i in range(len(listeTuples)):
             tuple=listeTuples[i]
@@ -871,7 +873,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             self.alerte()
         else:
             cy = CyRestClient()
-            net1 = cy.network.create_from(self.grapheLoc[self.graph_3.currentRow()])
+            net1 = cy.network.create_from(self.grapheLoc2[self.graph_3.currentRow()])
             net1.create_node_column("composante", data_type='Integer',is_immutable=False)
             net1.create_node_column("signe",data_type='Integer',is_immutable=False)
             table=net1.get_node_table()
@@ -939,19 +941,15 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             if( "Answer" in lines[k]):
                 res=res+1
                 line=lines[k+1]
-        print(line)
         return line
     
     #extraction des n composantes et export des fichiers correspondants
     def nComposantes(self,tableTuple):
-        print(tableTuple)
         n=self.nbComposantes(tableTuple)
-        print(n)
         listeComposante=[[] for _ in range(n)]
         for line in tableTuple:
             listeComposante[line[1]-1].append(line[0])
-        print(listeComposante)
-        file=open(self.grapheLoc[self.graph_3.currentRow()],'r')
+        file=open(self.grapheLoc2[self.graph_3.currentRow()],'r')
         base=file.readlines()
         file.close()
         graphesComposantes=[]
@@ -968,7 +966,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                         current.append(line)
             graphesComposantes.append(current)
         
-        directory=os.path.dirname(self.grapheLoc[self.graph_3.currentRow()])+"\\Composantes"
+        directory=os.path.dirname(self.grapheLoc2[self.graph_3.currentRow()])+"\\Composantes"
         if not os.path.exists(directory):
             os.makedirs(directory)
         for i in range(len(graphesComposantes)):
