@@ -169,18 +169,24 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         input=os.path.splitext(name)[0]+"-reduced-logic.txt"
         output=dir_path+"\ASPout.txt"
         #option apres input : --opt-mode=optN --enum-mode=cautious --quiet=1
+        print(input)
         if (self.time.value()==0):
             command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --opt-mode=optN --enum-mode=cautious --parallel-mode=2  > "+ os.path.splitext(input)[0] +"-colorations.txt"
         else:
             command=dir_path+"\clingo.exe " +str(nbColor)+" "+dir_path +"\optimizationComponent.lp "+input+" --time-limit="+str(self.time.value())+" --opt-mode=optN --enum-mode=cautious > "+ os.path.splitext(input)[0] +"-colorations.txt"
-        os.system(command)
-        try:
-            self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
-            self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
-            self.doneI()
-        except (IndexError, FileNotFoundError):
-            self.pb()
+        print(command)
     
+        os.system(command)
+        #try:
+        #    self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+        #    self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+        #    self.doneI()
+        #except (IndexError, FileNotFoundError):
+        #    self.pb()
+    
+        self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+        self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+        self.doneI()
     #lancement de la fonction d'affichage        
     def afficheColor(self):
         self.colorGraphe(self.table)
@@ -386,7 +392,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     def compaction(self,input,out1,out2,out3):
         file=open(input,"r")
         data=file.readlines()
-        
+        file.close()
         #print(data) 
         G=nx.MultiDiGraph()
         GOrigine=nx.MultiDiGraph()
@@ -445,6 +451,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                     #print (predecesseurs)
                     # Si nbre Predecesseur == 1 ET predec ne fusionne pas ET node ne fusionne pas
                     if(len(predecesseurs)==1 and predecesseurs[0] not in Fusion and node not in Fusion and len(G[predecesseurs[0]][node])==1 and self.FusionPossible(predecesseurs[0],node, G, G[predecesseurs[0]][node][0]['edge_type'])):
+                        
+
                     
                         #print(node+ " fusion avec "+predecesseurs[0])
                         # Si le pred et noeud partagent 2 arcs diffÃ©rent
@@ -482,14 +490,14 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                 # Si plus d'un prÃ©dÃ©cesseur fusionnable
                 if(len(PredecesseursFusionnables)>1):
                     # FUsion de ces noeuds
-                        # CrÃ©er un nom de tuple commun et mettre en dico rename
-                        reduction=True
-                        NouveauTuple=self.FusionTuples(PredecesseursFusionnables,node,G)
-                        
-                        G.add_edge(NouveauTuple,node,edge_type="1")
-                        # Stocker les autres noeud en suppression
-                        for sousNode in PredecesseursFusionnables:
-                            suppression.append(sousNode)
+                    # CrÃ©er un nom de tuple commun et mettre en dico rename
+                    reduction=True
+                    NouveauTuple=self.FusionTuples(PredecesseursFusionnables,node,G)
+                    
+                    G.add_edge(NouveauTuple,node,edge_type="1")
+                    # Stocker les autres noeud en suppression
+                    for sousNode in PredecesseursFusionnables:
+                        suppression.append(sousNode)
             G.remove_nodes_from(suppression)
         
             Copie=G.copy()
