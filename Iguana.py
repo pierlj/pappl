@@ -80,7 +80,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
     
     #affichage d'un message lorsque l'identification des colorations est terminée
     def doneI(a):
-        msglabel = QtWidgets.QLabel("\t\tL'identification des composantes est finie.\t\t")
+        msglabel = QtWidgets.QLabel("\t\tL'identification des composants est finie.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -104,9 +104,9 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         dialog.layout.addWidget(ok, 1, 1)
         dialog.exec_()
     
-    #affichage d'un message lorsque l'exportation des composantes est terminée
+    #affichage d'un message lorsque l'exportation des composants est terminée
     def doneN(a):
-        msglabel = QtWidgets.QLabel("\t\tL'exportation des composantes est terminée.\t\t")
+        msglabel = QtWidgets.QLabel("\t\tL'exportation des composants est terminée.\t\t")
         dialog = QtWidgets.QDialog()
         dialog.setWindowTitle("Fini")
         ok = QtWidgets.QPushButton('OK', dialog)
@@ -177,16 +177,16 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         print(command)
     
         os.system(command)
-        #try:
-        #    self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
-        #    self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
-        #    self.doneI()
-        #except (IndexError, FileNotFoundError):
-        #    self.pb()
+        try:
+            self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+            self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+            self.doneI()
+        except (IndexError, EnvironmentError):
+            self.pb()
     
-        self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
-        self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
-        self.doneI()
+        #self.processASP(os.path.splitext(name)[0]+"-reduced-logic-colorations.txt")
+        #self.identificationColor(os.path.splitext(name)[0]+"-reduced-logic-colorations-processed.txt")
+        #self.doneI()
     #lancement de la fonction d'affichage        
     def afficheColor(self):
         self.colorGraphe(self.table)
@@ -882,7 +882,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         else:
             cy = CyRestClient()
             net1 = cy.network.create_from(self.grapheLoc2[self.graph_3.currentRow()])
-            net1.create_node_column("composante", data_type='Integer',is_immutable=False)
+            net1.create_node_column("composant", data_type='Integer',is_immutable=False)
             net1.create_node_column("signe",data_type='Integer',is_immutable=False)
             table=net1.get_node_table()
             nodeTable={}
@@ -894,7 +894,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             
             for line in tableTuple:
             
-                table.set_value(nodeTable[line[0]],"composante",line[1])
+                table.set_value(nodeTable[line[0]],"composant",line[1])
                 table.set_value(nodeTable[line[0]],"signe",line[2])
                 
             net1.update_node_table(table,network_key_col='name', data_key_col='name')
@@ -913,7 +913,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             }]
             
             points[1]["value"]=self.nbComposantes(tableTuple)-1
-            style1.create_continuous_mapping(column='composante', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
+            style1.create_continuous_mapping(column='composant', col_type='Integer', vp='NODE_FILL_COLOR',points=points)
             cy.style.apply(style1,net1)
             cy.layout.apply(name='organic',network=net1)
             self.doneC()
@@ -933,7 +933,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             file.write(line+"\n")
         file.close()
 
-    #renvoie le nombre de composantes obtenues
+    #renvoie le nombre de composants obtenus
     def nbComposantes(self,table):
         nb=0
         for line in table:
@@ -951,7 +951,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                 line=lines[k+1]
         return line
     
-    #extraction des n composantes et export des fichiers correspondants
+    #extraction des n composants et export des fichiers correspondants
     def nComposantes(self,tableTuple):
         n=self.nbComposantes(tableTuple)
         listeComposante=[[] for _ in range(n)]
@@ -974,11 +974,11 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                         current.append(line)
             graphesComposantes.append(current)
         name = self.grapheLoc2[self.graph_3.currentRow()]
-        directory=os.path.dirname(self.grapheLoc2[self.graph_3.currentRow()])+"\\Composants_"+os.path.splitext(name)[0]
+        directory=os.path.dirname(name)+"//Composants_"+os.path.basename(os.path.splitext(name)[0])
         if not os.path.exists(directory):
             os.makedirs(directory)
         for i in range(len(graphesComposantes)):
-            strOpen=directory+"\\composant"+str(i+1)+".sif"
+            strOpen=directory+"//composant"+str(i+1)+".sif"
             file=open(strOpen,'w')
             for line in graphesComposantes[i]:
                 file.write(line)
