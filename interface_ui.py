@@ -158,14 +158,3 @@ class Ui_Form(object):
         self.color_1.setText(_translate("Form", "Colorer le graphe"))
         self.nCompo.setText(_translate("Form", "N Composantes"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Form", "Coloration d\'un graphe"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())
-
