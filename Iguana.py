@@ -965,12 +965,12 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
                     if (edge[0] in compo and edge[2] in compo ):
                         current.append(line)
             graphesComposantes.append(current)
-        
-        directory=os.path.dirname(self.grapheLoc2[self.graph_3.currentRow()])+"\\Composantes"
+        name = self.grapheLoc2[self.graph_3.currentRow()]
+        directory=os.path.dirname(self.grapheLoc2[self.graph_3.currentRow()])+"\\Composants_"+os.path.splitext(name)[0]
         if not os.path.exists(directory):
             os.makedirs(directory)
         for i in range(len(graphesComposantes)):
-            strOpen=directory+"\\composante"+str(i+1)+".sif"
+            strOpen=directory+"\\composant"+str(i+1)+".sif"
             file=open(strOpen,'w')
             for line in graphesComposantes[i]:
                 file.write(line)
