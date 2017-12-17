@@ -156,5 +156,5 @@ class Ui_Form(object):
         self.load_3.setText(_translate("Form", "Charger un graphe"))
         self.color.setText(_translate("Form", "Identifier les colorations"))
         self.color_1.setText(_translate("Form", "Colorer le graphe"))
-        self.nCompo.setText(_translate("Form", "N Composantes"))
+        self.nCompo.setText(_translate("Form", "N Composants"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Form", "Coloration d\'un graphe"))
