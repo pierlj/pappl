@@ -241,8 +241,8 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
             style1.create_discrete_mapping(column='interaction', 
                                         col_type='String', vp='EDGE_SOURCE_ARROW_SHAPE', mappings=kv_pair)
             
-            self.fname = self.grapheLoc2[self.graph.currentRow()]
-            net1 = cy.network.create_from(self.grapheLoc2[self.graph.currentRow()])
+            self.fname = self.grapheLoc[self.graph.currentRow()]
+            net1 = cy.network.create_from(self.grapheLoc[self.graph.currentRow()])
             cy.style.apply(style1,net1)
 
     def InversionTuple(self,node):
@@ -681,7 +681,7 @@ class Pappl(QtWidgets.QWidget, interface_ui.Ui_Form):
         
         
             #print("("+source+ ","+target+",1,"+str(poidsActivation)+").")
-                    fileOutput.write("edge("+DicoInverse[edge[0]]+ ","+DicoInverse[edge[1]]+",1,"+str(poidsActivation-poidsMin)+").\n")
+                fileOutput.write("edge("+DicoInverse[edge[0]]+ ","+DicoInverse[edge[1]]+",1,"+str(poidsActivation-poidsMin)+").\n")
             if(poidsInhibition-poidsMin!=0):
                 if(edge[0] in NodeUtilise):
                     NodeUtilise.remove(edge[0])
